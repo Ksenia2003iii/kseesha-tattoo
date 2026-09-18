@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ксеша | Тату | Графика и хендпоук · Казань / СПб</title>
+<meta name="description" content="Татуировки в стиле графика и хендпоук. Казань и Санкт-Петербург. Бесплатная разработка эскиза. Мини-тату — 4 000 ₽. Запись онлайн.">
+<meta name="theme-color" content="#0f0f1a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖋️</text></svg>">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #e8e8f0;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 70px 0; }
+  h2 { font-size: 32px; margin-bottom: 12px; letter-spacing: -0.5px; }
+  h2 .accent { color: #b794f6; }
+  .section-sub { color: #8888a0; margin-bottom: 40px; font-size: 16px; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(15,15,26,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 14px 0; z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-weight: 700; font-size: 17px; letter-spacing: -0.3px; }
+  .logo .accent { color: #b794f6; }
+  .header-phone { color: #b794f6; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .header-phone:hover { color: #d4b5ff; }
+
+  .hero {
+    padding: 140px 0 70px;
+    background: linear-gradient(180deg, #0f0f1a 0%, #16162a 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 10%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(183,148,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 50px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero h1 { font-size: 48px; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1.5px; }
+  .hero h1 .accent { color: #b794f6; }
+  .hero-sub { font-size: 18px; color: #a0a0b8; margin-bottom: 30px; max-width: 500px; }
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+  .badge {
+    background: rgba(183,148,246,0.12); color: #b794f6;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 13px; font-weight: 600;
+  }
+  .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 16px 28px; border-radius: 12px;
+    font-size: 16px; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    border: none; transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #b794f6, #9f7aea);
+    color: #0f0f1a;
+    box-shadow: 0 8px 24px rgba(183,148,246,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(183,148,246,0.45); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-outline {
+    background: transparent; color: #e8e8f0;
+    border: 2px solid rgba(255,255,255,0.15);
+  }
+  .btn-outline:hover { border-color: #b794f6; color: #b794f6; }
+
+  .hero-photo {
+    aspect-ratio: 4/5;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step {
+    background: #16162a; border-radius: 16px;
+    padding: 32px 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, #b794f6, #9f7aea);
+    color: #0f0f1a; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px; margin-bottom: 16px;
+  }
+  .step h3 { font-size: 18px; margin-bottom: 10px; }
+  .step p { color: #8888a0; font-size: 15px; }
+
+  .carousel-wrap { position: relative; }
+  .carousel {
+    display: flex; gap: 16px; overflow-x: auto;
+    scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    padding-bottom: 12px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: #b794f6 transparent;
+  }
+  .carousel::-webkit-scrollbar { height: 6px; }
+  .carousel::-webkit-scrollbar-track { background: #16162a; border-radius: 3px; }
+  .carousel::-webkit-scrollbar-thumb { background: #b794f6; border-radius: 3px; }
+  .carousel .work, .carousel .work-placeholder {
+    flex: 0 0 calc((100% - 48px) / 4);
+    scroll-snap-align: start; aspect-ratio: 1;
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    background: linear-gradient(135deg, #1e1e35, #2a2a45);
+    cursor: pointer; transition: all 0.2s; min-width: 180px;
+  }
+  @media (max-width: 768px) {
+    .carousel .work, .carousel .work-placeholder {
+      flex: 0 0 calc((100% - 16px) / 2); min-width: 140px;
+    }
+  }
+  .carousel .work:hover { transform: scale(1.02); border-color: #b794f6; }
+  .carousel .work img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .carousel .work-placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #55556a; font-size: 13px; text-align: center; padding: 16px; cursor: default;
+  }
+  .carousel .work-placeholder::before {
+    content: '🖼️'; font-size: 32px; display: block; margin-bottom: 6px; opacity: 0.4;
+  }
+  .carousel .work-placeholder:hover { transform: none; border-color: rgba(255,255,255,0.05); }
+
+  .carousel-controls {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 20px; gap: 12px; flex-wrap: wrap;
+  }
+  .carousel-arrows { display: flex; gap: 8px; }
+  .carousel-arrows button {
+    background: #16162a; border: 1px solid rgba(255,255,255,0.1);
+    color: #e8e8f0; width: 44px; height: 44px; border-radius: 50%;
+    cursor: pointer; font-size: 18px; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .carousel-arrows button:hover {
+    border-color: #b794f6; color: #b794f6; background: rgba(183,148,246,0.08);
+  }
+  .show-all-btn {
+    background: transparent; border: 1px solid rgba(183,148,246,0.4);
+    color: #b794f6; padding: 10px 20px; border-radius: 10px;
+    font-weight: 600; cursor: pointer; font-family: inherit;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .show-all-btn:hover { background: rgba(183,148,246,0.1); border-color: #b794f6; }
+
+  .portfolio-note {
+    margin-top: 24px; text-align: center; color: #8888a0; font-size: 14px;
+    padding: 16px; background: #16162a; border-radius: 12px;
+    border: 1px dashed rgba(183,148,246,0.3);
+  }
+
+  .lightbox {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92); z-index: 3000;
+    align-items: center; justify-content: center;
+    padding: 40px; cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 80vw; max-height: 80vh; border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: none; color: #fff;
+    width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+    font-size: 22px; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .lightbox-nav:hover { background: rgba(183,148,246,0.3); }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  @media (max-width: 768px) {
+    .lightbox { padding: 20px; }
+    .lightbox img { max-width: 95vw; max-height: 85vh; }
+    .lightbox-nav { width: 40px; height: 40px; font-size: 18px; }
+    .lightbox-prev { left: 8px; }
+    .lightbox-next { right: 8px; }
+  }
+
+  .week-flash {
+    background: linear-gradient(135deg, #1e1e35, #252540);
+    border: 2px solid #b794f6; border-radius: 20px;
+    padding: 24px; margin-bottom: 40px;
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 32px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .week-flash::before {
+    content: '🔥 ЭСКИЗ НЕДЕЛИ'; position: absolute;
+    top: 16px; left: 16px; background: #b794f6;
+    color: #0f0f1a; padding: 6px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 800; letter-spacing: 1px; z-index: 2;
+  }
+  .week-flash-img {
+    aspect-ratio: 1; border-radius: 16px; overflow: hidden;
+    background: linear-gradient(135deg, #0f0f1a, #1e1e35); cursor: pointer;
+  }
+  .week-flash-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .week-flash-info h3 { font-size: 24px; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .week-flash-info p { color: #c0c0d0; font-size: 15px; margin-bottom: 16px; }
+  .week-flash-price { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .week-flash-price .old { color: #8888a0; text-decoration: line-through; font-size: 18px; }
+  .week-flash-price .new { color: #b794f6; font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+  .week-flash-price .discount {
+    background: rgba(239,68,68,0.15); color: #ef4444;
+    padding: 4px 10px; border-radius: 8px; font-size: 13px; font-weight: 700;
+  }
+  .week-flash .btn { width: 100%; justify-content: center; }
+  @media (max-width: 768px) {
+    .week-flash { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+    .week-flash-img { max-width: 280px; margin: 0 auto; }
+    .week-flash-info h3 { font-size: 20px; }
+  }
+
+  .filter-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .filter-chip {
+    background: #16162a; border: 1px solid rgba(255,255,255,0.1);
+    color: #c0c0d0; padding: 8px 16px; border-radius: 20px;
+    font-size: 14px; cursor: pointer; transition: all 0.2s;
+    font-family: inherit; font-weight: 500;
+  }
+  .filter-chip:hover { border-color: #b794f6; color: #b794f6; }
+  .filter-chip.active {
+    background: #b794f6; color: #0f0f1a; border-color: #b794f6; font-weight: 700;
+  }
+
+  .themes-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;
+  }
+  .theme-card {
+    background: linear-gradient(135deg, #1e1e35, #252540);
+    border-radius: 16px; padding: 28px 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; transition: all 0.2s;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .theme-card:hover {
+    border-color: #b794f6; transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(183,148,246,0.2);
+  }
+  .theme-card .theme-icon { font-size: 42px; margin-bottom: 12px; display: block; }
+  .theme-card h3 { font-size: 18px; margin-bottom: 6px; color: #e8e8f0; }
+  .theme-card .theme-count { font-size: 13px; color: #8888a0; }
+
+  .subthemes { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .subtheme-chip {
+    background: #16162a; border: 1px solid rgba(255,255,255,0.1);
+    color: #c0c0d0; padding: 8px 16px; border-radius: 20px;
+    font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: inherit;
+  }
+  .subtheme-chip:hover { border-color: #b794f6; color: #b794f6; }
+  .subtheme-chip.active {
+    background: #b794f6; color: #0f0f1a; border-color: #b794f6; font-weight: 700;
+  }
+
+  .theme-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .back-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: #c0c0d0; padding: 10px 16px; border-radius: 10px;
+    cursor: pointer; font-family: inherit; font-size: 14px;
+    font-weight: 600; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .back-btn:hover { border-color: #b794f6; color: #b794f6; }
+  .theme-title { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+
+  .flash-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;
+  }
+  .flash {
+    background: #16162a; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s;
+  }
+  .flash:hover { border-color: #b794f6; transform: translateY(-2px); }
+  .flash-img {
+    aspect-ratio: 1; background: linear-gradient(135deg, #1e1e35, #2a2a45);
+    display: flex; align-items: center; justify-content: center;
+    color: #55556a; font-size: 14px; cursor: pointer;
+    overflow: hidden; position: relative;
+  }
+  .flash-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .flash-img::before { content: '🎨'; font-size: 40px; opacity: 0.4; }
+  .flash-img.has-img::before { display: none; }
+  .flash-info { padding: 16px; }
+  .flash-info h4 { font-size: 15px; margin-bottom: 6px; }
+  .flash-info p { font-size: 13px; color: #8888a0; margin-bottom: 12px; }
+  .flash-price { color: #b794f6; font-size: 18px; font-weight: 800; margin-bottom: 12px; }
+  .flash-info .btn { width: 100%; justify-content: center; padding: 12px; font-size: 14px; }
+
+  .all-sections-btn {
+    display: block; margin: 32px auto 0;
+    background: transparent; border: 1px solid rgba(183,148,246,0.4);
+    color: #b794f6; padding: 14px 28px; border-radius: 12px;
+    font-weight: 600; cursor: pointer; font-family: inherit;
+    font-size: 15px; transition: all 0.2s;
+  }
+  .all-sections-btn:hover { background: rgba(183,148,246,0.1); border-color: #b794f6; }
+
+  .prices-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .price-card {
+    background: #16162a; border-radius: 16px;
+    padding: 32px; border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: #b794f6;
+    background: linear-gradient(135deg, #1e1e35, #252540);
+  }
+  .price-card.featured::before {
+    content: 'ПОПУЛЯРНОЕ'; position: absolute; top: -10px; left: 24px;
+    background: #b794f6; color: #0f0f1a;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  }
+  .price-card h3 { font-size: 20px; margin-bottom: 8px; }
+  .price-card .price { font-size: 32px; font-weight: 800; color: #b794f6; margin: 12px 0; letter-spacing: -1px; }
+  .price-card p { color: #8888a0; font-size: 14px; }
+
+  .safety-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .safety-item {
+    background: #16162a; border-radius: 12px;
+    padding: 20px; border: 1px solid rgba(255,255,255,0.05);
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .safety-item .icon { font-size: 24px; flex-shrink: 0; }
+  .safety-item .text { font-size: 14px; color: #c0c0d0; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items: center; }
+  .about-photo {
+    aspect-ratio: 4/5; border-radius: 20px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-text p { color: #c0c0d0; font-size: 15px; margin-bottom: 16px; line-height: 1.7; }
+  .about-text strong { color: #b794f6; font-weight: 600; }
+  .about-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .fact {
+    background: #0f0f1a; border-radius: 12px; padding: 18px 14px;
+    border: 1px solid rgba(183,148,246,0.15); text-align: center;
+  }
+  .fact-num { font-size: 24px; font-weight: 800; color: #b794f6; margin-bottom: 6px; letter-spacing: -1px; }
+  .fact-label { font-size: 12px; color: #8888a0; line-height: 1.4; }
+
+  .locations { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .location {
+    background: #16162a; border-radius: 16px;
+    padding: 28px; border: 1px solid rgba(255,255,255,0.05);
+  }
+  .location .city {
+    font-size: 13px; color: #b794f6; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .location h3 { font-size: 18px; margin-bottom: 8px; }
+  .location p { color: #8888a0; font-size: 14px; }
+
+  .booking-wrap {
+    background: #16162a; border-radius: 20px;
+    padding: 40px; border: 1px solid rgba(255,255,255,0.05);
+    max-width: 700px; margin: 0 auto;
+  }
+  .booking-wrap h2 { text-align: center; }
+  .booking-wrap .section-sub { text-align: center; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; color: #a0a0b8; margin-bottom: 6px; font-weight: 600; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 14px 16px; background: #0f0f1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: #e8e8f0;
+    font-size: 15px; font-family: inherit; transition: all 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none; border-color: #b794f6;
+    box-shadow: 0 0 0 3px rgba(183,148,246,0.15);
+  }
+  .form-group input.error, .form-group textarea.error, .form-group select.error {
+    border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  }
+  .form-group .error-text { color: #ef4444; font-size: 12px; margin-top: 6px; display: none; }
+  .form-group.has-error .error-text { display: block; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .prepay-notice {
+    background: rgba(183,148,246,0.08);
+    border: 1px solid rgba(183,148,246,0.2);
+    border-radius: 10px; padding: 14px 16px;
+    font-size: 13px; color: #c0c0d0; margin-bottom: 20px;
+  }
+  .prepay-notice strong { color: #b794f6; }
+
+  .submit-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .submit-buttons .btn { width: 100%; justify-content: center; padding: 18px; font-size: 15px; }
+  .btn-tg {
+    background: linear-gradient(135deg, #29b6f6, #0288d1);
+    color: #fff; box-shadow: 0 8px 24px rgba(41,182,246,0.3);
+  }
+  .btn-tg:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(41,182,246,0.45); }
+  .btn-max {
+    background: linear-gradient(135deg, #b794f6, #9f7aea);
+    color: #0f0f1a; box-shadow: 0 8px 24px rgba(183,148,246,0.3);
+  }
+  .btn-max:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(183,148,246,0.45); }
+
+  .contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .contact-card {
+    background: #16162a; border-radius: 12px;
+    padding: 20px; border: 1px solid rgba(255,255,255,0.05);
+    text-align: center; text-decoration: none;
+    color: #e8e8f0; transition: all 0.2s;
+  }
+  .contact-card:hover { border-color: #b794f6; transform: translateY(-2px); }
+  .contact-card .icon { font-size: 28px; margin-bottom: 8px; }
+  .contact-card .label { font-size: 12px; color: #8888a0; margin-bottom: 4px; }
+  .contact-card .value { font-weight: 600; font-size: 15px; }
+
+  footer {
+    background: #0a0a14; padding: 40px 0 30px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px; color: #6666a0;
+  }
+  .footer-inner { display: flex; flex-direction: column; gap: 12px; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { color: #8888a0; text-decoration: none; cursor: pointer; }
+  .footer-links a:hover { color: #b794f6; }
+  .legal { font-size: 12px; color: #55556a; line-height: 1.7; }
+
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85); z-index: 2000; padding: 20px; overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+  .modal {
+    background: #16162a; border-radius: 20px;
+    padding: 32px; max-width: 640px; width: 100%;
+    margin: 40px auto; position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .modal-wide { max-width: 900px; }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(255,255,255,0.05); border: none;
+    color: #8888a0; width: 36px; height: 36px;
+    border-radius: 50%; cursor: pointer; font-size: 18px;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .modal h2 { font-size: 24px; margin-bottom: 8px; }
+  .modal .section-sub { margin-bottom: 24px; }
+  .modal .form-group { margin-bottom: 20px; }
+
+  .all-sections-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px; margin-top: 16px;
+  }
+  .section-block {
+    background: #0f0f1a; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 20px; transition: all 0.2s;
+  }
+  .section-block:hover { border-color: #b794f6; }
+  .section-block .block-icon { font-size: 26px; margin-bottom: 10px; }
+  .section-block h4 { font-size: 15px; margin-bottom: 6px; }
+  .section-block p { font-size: 13px; color: #8888a0; }
+
+  .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+  .checkbox-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; background: #0f0f1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 14px;
+  }
+  .checkbox-item:hover { border-color: rgba(183,148,246,0.4); }
+  .checkbox-item input { accent-color: #b794f6; width: 18px; height: 18px; flex-shrink: 0; }
+  .checkbox-item.checked { border-color: #b794f6; background: rgba(183,148,246,0.08); }
+
+  .file-drop {
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 10px; padding: 24px 16px;
+    text-align: center; transition: all 0.2s;
+    font-size: 14px; color: #8888a0;
+  }
+  .file-drop.dragover {
+    border-color: #b794f6; background: rgba(183,148,246,0.08); color: #b794f6;
+  }
+  .file-drop-icon { font-size: 32px; margin-bottom: 8px; opacity: 0.6; }
+  .file-drop-hint { font-size: 12px; color: #6666a0; margin-top: 6px; }
+  .file-buttons { display: flex; gap: 8px; margin-top: 12px; justify-content: center; flex-wrap: wrap; }
+  .file-btn {
+    background: #0f0f1a; border: 1px solid rgba(255,255,255,0.1);
+    color: #e8e8f0; padding: 10px 16px; border-radius: 8px;
+    font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .file-btn:hover { border-color: #b794f6; color: #b794f6; }
+  .file-list { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .file-chip {
+    background: rgba(183,148,246,0.15); color: #b794f6;
+    padding: 6px 12px; border-radius: 8px; font-size: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .file-chip button {
+    background: transparent; border: none; color: #b794f6;
+    cursor: pointer; font-size: 14px; padding: 0; line-height: 1;
+  }
+
+  .date-picker {
+    display: none; background: #0f0f1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 16px; margin-top: 10px;
+  }
+  .date-picker.show { display: block; }
+  .date-picker-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; font-weight: 600; font-size: 14px;
+  }
+  .date-picker-header button {
+    background: #eef2ff; border: none; color: #4f46e5;
+    width: 32px; height: 32px; border-radius: 8px;
+    cursor: pointer; font-size: 16px; font-weight: 700;
+  }
+  .date-picker-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .date-picker-dow { text-align: center; font-size: 11px; color: #8888a0; padding: 4px 0; }
+  .date-picker-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; font-size: 13px; cursor: pointer;
+    background: #16162a; border: 2px solid transparent;
+    transition: all 0.15s; user-select: none;
+  }
+  .date-picker-day:hover { background: #1e1e35; }
+  .date-picker-day.selected { background: #b794f6; color: #0f0f1a; font-weight: 700; }
+  .date-picker-day.disabled { color: #55556a; cursor: not-allowed; background: transparent; }
+  .date-picker-hint { font-size: 12px; color: #8888a0; margin-top: 10px; text-align: center; }
+
+  /* ТАБЫ */
+  .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-btn {
+    background: #16162a; border: 1px solid rgba(255,255,255,0.1);
+    color: #c0c0d0; padding: 12px 22px; border-radius: 12px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .tab-btn:hover { border-color: #b794f6; color: #b794f6; }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #b794f6, #9f7aea);
+    color: #0f0f1a; border-color: #b794f6;
+    box-shadow: 0 8px 24px rgba(183,148,246,0.3);
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .legal-text {
+    background: #16162a; border-radius: 16px;
+    padding: 32px; border: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px; color: #c0c0d0; line-height: 1.8;
+    max-height: 600px; overflow-y: auto;
+  }
+  .legal-text h3 { color: #b794f6; margin: 20px 0 10px; font-size: 16px; }
+  .legal-text h3:first-child { margin-top: 0; }
+  .legal-text p { margin-bottom: 10px; }
+  .legal-text ul { margin: 10px 0 10px 20px; }
+  .legal-text li { margin-bottom: 6px; }
+
+  @media (max-width: 768px) {
+    section { padding: 50px 0; }
+    h2 { font-size: 26px; }
+    .hero { padding: 120px 0 50px; }
+    .hero h1 { font-size: 34px; }
+    .hero-sub { font-size: 16px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    .hero-photo { aspect-ratio: 1; max-width: 340px; margin: 0 auto; }
+    .steps { grid-template-columns: 1fr; }
+    .prices-grid { grid-template-columns: 1fr; }
+    .locations { grid-template-columns: 1fr; }
+    .contacts-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .booking-wrap { padding: 24px; }
+    .modal { padding: 24px; margin: 20px auto; }
+    .header-phone { font-size: 13px; }
+    .logo { font-size: 15px; }
+    .btn { padding: 14px 22px; font-size: 15px; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-photo { aspect-ratio: 1; max-width: 320px; margin: 0 auto; }
+    .about-facts { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .fact { padding: 14px 8px; }
+    .fact-num { font-size: 20px; }
+    .fact-label { font-size: 11px; }
+    .submit-buttons { grid-template-columns: 1fr; }
+    .themes-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .theme-card { padding: 20px 12px; }
+    .theme-card .theme-icon { font-size: 32px; }
+    .theme-card h3 { font-size: 15px; }
+    .theme-card .theme-count { font-size: 11px; }
+    .all-sections-grid { grid-template-columns: 1fr; }
+    .tab-btn { padding: 10px 16px; font-size: 13px; }
+  }
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 28px; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">Ксеша <span class="accent">| тату</span></div>
+    <a href="tel:+79506646931" class="header-phone">+7 950 664-69-31</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Тату в стиле <span class="accent">графика</span> и <span class="accent">хендпоук</span></h1>
+      <p class="hero-sub">Казань · Санкт-Петербург. Бесплатно разработаю эскиз под твою идею — пришлю первый вариант в течение 24 часов.</p>
+      <div class="hero-badges">
+        <span class="badge">🎨 Эскиз бесплатно</span>
+        <span class="badge">💉 Мини-тату 4 000 ₽</span>
+        <span class="badge">📍 Казань · СПб</span>
+      </div>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="openGenerate()">✨ Сгенерировать эскиз</button>
+        <button class="btn btn-outline" onclick="scrollToBooking()">📅 Записаться</button>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="work-1.jpg" alt="Тату в стиле графика и хендпоук — мышь с грибами">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Как я <span class="accent">работаю</span></h2>
+    <p class="section-sub">Три простых шага от идеи до татуировки</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Оставляешь заявку</h3>
+        <p>Заполняешь форму «Сгенерировать эскиз» или пишешь в Telegram. Отвечаю в течение дня.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Получаешь эскиз</h3>
+        <p>Бесплатно рисую первый вариант под твою идею. Обсуждаем детали, правим, дополняем.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Записываемся на сеанс</h3>
+        <p>Выбираем дату. Предоплата 1 000 ₽ идёт в счёт сеанса. Приходишь — делаем тату.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: #12121f;">
+  <div class="container">
+    <h2>Мои <span class="accent">работы</span></h2>
+    <p class="section-sub">Графика · Хендпоук · листай вправо или смотри все</p>
+    <div class="carousel-wrap">
+      <div class="carousel" id="worksCarousel">
+        <div class="work" onclick="openGallery('works', 0)"><img src="work-1.jpg" alt="Мышь с грибами" loading="lazy"></div>
+        <div class="work" onclick="openGallery('works', 1)"><img src="work-2.jpg" alt="Танец" loading="lazy"></div>
+        <div class="work" onclick="openGallery('works', 2)"><img src="work-3.jpg" alt="Цепь" loading="lazy"></div>
+        <div class="work" onclick="openGallery('works', 3)"><img src="work-4.jpg" alt="Ветки" loading="lazy"></div>
+        <div class="work-placeholder">Работа 5<br>(скоро)</div>
+        <div class="work-placeholder">Работа 6<br>(скоро)</div>
+        <div class="work-placeholder">Работа 7<br>(скоро)</div>
+        <div class="work-placeholder">Работа 8<br>(скоро)</div>
+      </div>
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button onclick="scrollCarousel('worksCarousel', -1)" title="Назад">‹</button>
+          <button onclick="scrollCarousel('worksCarousel', 1)" title="Вперёд">›</button>
+        </div>
+        <button class="show-all-btn" onclick="openGallery('works', 0)">Посмотреть все →</button>
+      </div>
+    </div>
+    <div class="portfolio-note">
+      🖼️ Портфолио пополняется. Зажившие работы появятся в середине октября 2026.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Зажившие <span class="accent">работы</span></h2>
+    <p class="section-sub">Фото тату через месяц после сеанса — как рисунок садится на кожу</p>
+    <div class="carousel-wrap">
+      <div class="carousel" id="healedCarousel">
+        <div class="work-placeholder">Зажившая 1<br>(октябрь 2026)</div>
+        <div class="work-placeholder">Зажившая 2<br>(октябрь 2026)</div>
+        <div class="work-placeholder">Зажившая 3<br>(октябрь 2026)</div>
+        <div class="work-placeholder">Зажившая 4<br>(октябрь 2026)</div>
+        <div class="work-placeholder">Зажившая 5<br>(октябрь 2026)</div>
+        <div class="work-placeholder">Зажившая 6<br>(октябрь 2026)</div>
+      </div>
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button onclick="scrollCarousel('healedCarousel', -1)" title="Назад">‹</button>
+          <button onclick="scrollCarousel('healedCarousel', 1)" title="Вперёд">›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flash" style="background: #12121f;">
+  <div class="container">
+    <h2>Свободные <span class="accent">эскизы</span></h2>
+    <p class="section-sub">Готовые авторские эскизы — цена фиксированная, повтор не делаю</p>
+
+    <div class="week-flash" id="weekFlash" style="display:none;">
+      <div class="week-flash-img" id="weekFlashImg" onclick="openLightbox(document.getElementById('weekFlashImg').querySelector('img').src)">
+        <img src="" alt="Эскиз недели">
+      </div>
+      <div class="week-flash-info">
+        <h3 id="weekFlashTitle">—</h3>
+        <p id="weekFlashDesc">—</p>
+        <div class="week-flash-price">
+          <span class="old" id="weekFlashOld">—</span>
+          <span class="new" id="weekFlashNew">—</span>
+          <span class="discount">−20%</span>
+        </div>
+        <button class="btn btn-primary" onclick="openFlashBooking(document.getElementById('weekFlashTitle').textContent)">🔥 Забронировать со скидкой</button>
+      </div>
+    </div>
+
+    <div class="filter-chips">
+      <button class="filter-chip active" onclick="applyFilter('all', this)">🎨 Все темы</button>
+      <button class="filter-chip" onclick="applyFilter('new', this)">🆕 Новинки</button>
+      <button class="filter-chip" onclick="applyFilter('hit', this)">🏆 Хиты</button>
+      <button class="filter-chip" onclick="applyFilter('cheap', this)">💰 До 4 000 ₽</button>
+      <button class="filter-chip" onclick="applyFilter('pair', this)">🖤 Парные</button>
+    </div>
+
+    <div id="themesView">
+      <div class="themes-grid" id="themesGrid"></div>
+      <button class="all-sections-btn" onclick="openAllSections()">📚 Все разделы и блоки →</button>
+    </div>
+
+    <div id="themeView" style="display:none;">
+      <div class="theme-header">
+        <button class="back-btn" onclick="backToThemes()">← Назад к темам</button>
+        <div class="theme-title" id="themeTitle">—</div>
+      </div>
+      <div class="subthemes" id="subthemesRow"></div>
+      <div class="flash-grid" id="flashGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Цены</h2>
+    <p class="section-sub">Прозрачно и без скрытых доплат</p>
+    <div class="prices-grid">
+      <div class="price-card featured">
+        <h3>Мини-тату</h3>
+        <div class="price">4 000 ₽</div>
+        <p>Фиксированная цена. Размер до 5×5 см. Подходит для небольших символов, текста, минималистичных рисунков.</p>
+      </div>
+      <div class="price-card">
+        <h3>Индивидуальный проект</h3>
+        <div class="price">от 5 000 ₽</div>
+        <p>Зависит от сложности и размера. Точная стоимость — после согласования эскиза. Консультация и разработка эскиза бесплатно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: #12121f;">
+  <div class="container">
+    <h2>Стерильность и <span class="accent">безопасность</span></h2>
+    <p class="section-sub">Работаю по стандартам, которые защищают тебя</p>
+    <div class="safety-list">
+      <div class="safety-item"><span class="icon">💉</span><div class="text">Только одноразовые иглы и картриджи. Вскрываю при тебе.</div></div>
+      <div class="safety-item"><span class="icon">🧼</span><div class="text">Дезинфекция рабочего места до и после сеанса.</div></div>
+      <div class="safety-item"><span class="icon">📋</span><div class="text">Медицинская книжка и сертификат мастера.</div></div>
+      <div class="safety-item"><span class="icon">✍️</span><div class="text">Перед сеансом подписываем согласие на проведение татуировки.</div></div>
+      <div class="safety-item"><span class="icon">🏢</span><div class="text">Работаю в лицензированных коворкингах для тату-мастеров.</div></div>
+      <div class="safety-item"><span class="icon">🩺</span><div class="text">Учитываю противопоказания — заполняешь анкету здоровья до сеанса.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Обо <span class="accent">мне</span></h2>
+    <p class="section-sub">Ксеша · тату-мастер · графика и хендпоук</p>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="me.jpg" alt="Ксеша — тату-мастер, графика и хендпоук">
+      </div>
+      <div class="about-text">
+        <p>Привет! Я Ксеша — родом из <strong>Санкт-Петербурга</strong>, сейчас живу и в основном работаю в <strong>Казани</strong>. В Питере тоже периодически принимаю — по договорённости. Специализируюсь на <strong>графике</strong> и <strong>хендпоуке</strong> — это два стиля, где важны линия, текстура и характер, а не просто «картинка на коже».</p>
+        <p>Люблю работать с идеей, а не просто переносить референс. Но если тебе очень нравится какая-то картинка из Pinterest — приноси, обсудим. Только сразу скажу честно: <strong>точь-в-точь не выйдет</strong> — многое зависит от анатомии кожи, места на теле и того, как рисунок ляжет именно на твоё тело. Я адаптирую эскиз под тебя.</p>
+        <p>Работаю как <strong>самозанятая</strong>, есть медицинская книжка и сертификат. Принимаю в лицензированных коворкингах для тату-мастеров, чтобы ты была уверена в стерильности и безопасности.</p>
+        <div class="about-facts">
+          <div class="fact">
+            <div class="fact-num">6</div>
+            <div class="fact-label">работ в портфолио<br>и растёт каждую неделю</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">24ч</div>
+            <div class="fact-label">на первый вариант<br>эскиза</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">0₽</div>
+            <div class="fact-label">за консультацию<br>и разработку эскиза</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: #12121f;">
+  <div class="container">
+    <h2>Где <span class="accent">принимаю</span></h2>
+    <p class="section-sub">Два города — выбирай удобный</p>
+    <div class="locations">
+      <div class="location">
+        <div class="city">Казань</div>
+        <h3>Школа тату Kivi</h3>
+        <p>ул. Петербургская, 25В<br>Коворкинг для тату-мастеров</p>
+      </div>
+      <div class="location">
+        <div class="city">Санкт-Петербург</div>
+        <h3>Школа тату Kivi</h3>
+        <p>Каменноостровский проспект, 26-28<br>Коворкинг для тату-мастеров</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="container">
+    <div class="booking-wrap">
+      <h2>Записаться</h2>
+      <p class="section-sub">Оставь заявку — свяжусь с тобой в течение дня</p>
+      <div class="prepay-notice">
+        <strong>Предоплата 1 000 ₽.</strong> Идёт в счёт разработки эскиза. Если приходишь на сеанс — сумма вычитается из стоимости. Предоплата не возвращается, если клиент не приходит, так как мастер уже потратил время на подготовку.
+      </div>
+      <form id="bookingForm" onsubmit="event.preventDefault()">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Имя *</label>
+            <input type="text" name="name" required placeholder="Как к тебе обращаться">
+            <div class="error-text">Это поле обязательно</div>
+          </div>
+          <div class="form-group">
+            <label>Телефон *</label>
+            <input type="tel" name="phone" required placeholder="+7 ___ ___-__-__">
+            <div class="error-text">Это поле обязательно</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Ник в Telegram или Max *</label>
+          <input type="text" name="telegram" required placeholder="@username">
+          <div class="error-text">Это поле обязательно</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Желаемая дата</label>
+            <input type="date" name="date">
+          </div>
+          <div class="form-group">
+            <label>Город</label>
+            <select name="city">
+              <option value="Казань">Казань</option>
+              <option value="Санкт-Петербург">Санкт-Петербург</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Хочешь взять свободный эскиз?</label>
+          <select name="flash">
+            <option value="Нет, хочу индивидуальный">Нет, хочу индивидуальный</option>
+            <option value="Из темы «Животные»">Из темы «Животные»</option>
+            <option value="Из темы «Насекомые»">Из темы «Насекомые»</option>
+            <option value="Из темы «Море и океан»">Из темы «Море и океан»</option>
+            <option value="Из темы «Цветы и растения»">Из темы «Цветы и растения»</option>
+            <option value="Из темы «Сердца»">Из темы «Сердца»</option>
+            <option value="Из темы «Глаза»">Из темы «Глаза»</option>
+            <option value="Из темы «Дарк-стиль»">Из темы «Дарк-стиль»</option>
+            <option value="Из темы «Символы и знаки»">Из темы «Символы и знаки»</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Комментарий</label>
+          <textarea name="comment" placeholder="Опиши идею, место на теле, размер..."></textarea>
+        </div>
+
+        <div class="submit-buttons">
+          <button type="button" class="btn btn-tg" onclick="submitBooking(event, 'telegram')">✈️ Записаться в ТГ</button>
+          <button type="button" class="btn btn-max" onclick="submitBooking(event, 'max')">💬 Записаться в Max</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section style="background: #12121f;">
+  <div class="container">
+    <h2>Контакты</h2>
+    <p class="section-sub">Свяжись удобным способом</p>
+    <div class="contacts-grid">
+      <a href="tel:+79506646931" class="contact-card">
+        <div class="icon">📞</div>
+        <div class="label">Телефон</div>
+        <div class="value">+7 950 664-69-31</div>
+      </a>
+      <a href="https://t.me/kseeeshca" target="_blank" class="contact-card">
+        <div class="icon">✈️</div>
+        <div class="label">Telegram</div>
+        <div class="value">@kseeeshca</div>
+      </a>
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <div class="label">Города</div>
+        <div class="value">Казань · СПб</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДОКУМЕНТЫ С ТАБАМИ -->
+<section id="legal">
+  <div class="container">
+    <h2>Документы</h2>
+    <p class="section-sub">Публичная оферта и согласие на процедуру</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="openTab('offer', event)">📄 Публичная оферта</button>
+      <button class="tab-btn" onclick="openTab('consent', event)">✍️ Соглашение на процедуру</button>
+    </div>
+
+    <!-- Оферта -->
+    <div class="tab-content active" id="tab-offer">
+      <div class="legal-text">
+        <h3>1. Общие положения</h3>
+        <p>Настоящий документ является публичной офертой самозанятой <strong>Львовой Ксении Андреевны</strong> (далее — «Мастер») и содержит все существенные условия оказания услуг по нанесению татуировок и разработке эскизов.</p>
+
+        <h3>2. Предмет оферты</h3>
+        <p>Мастер оказывает услуги: разработка эскиза татуировки, нанесение татуировки, консультация. Услуги оказываются на территории коворкингов в Казани (ул. Петербургская, 25В) и Санкт-Петербурге (Каменноостровский пр., 26-28).</p>
+
+        <h3>3. Предоплата</h3>
+        <p>Для подтверждения записи клиент вносит предоплату в размере 1 000 ₽. Предоплата идёт в счёт разработки эскиза и засчитывается в стоимость сеанса при его проведении. Если клиент не приходит на сеанс, предоплата не возвращается, так как мастер уже затратил время на подготовку эскиза.</p>
+
+        <h3>4. Возраст</h3>
+        <p>Услуги оказываются лицам, достигшим 18 лет. При себе необходимо иметь паспорт.</p>
+        <p><strong>Клиентам от 14 до 18 лет</strong> татуировка может быть выполнена только при наличии <strong>письменного согласия родителей (законных представителей)</strong>. Родитель обязан <strong>лично присутствовать на сеансе</strong> для подписания согласия. Без письменного согласия и личного присутствия родителя услуга не оказывается.</p>
+
+        <h3>5. Противопоказания</h3>
+        <p>Клиент обязан сообщить мастеру о наличии противопоказаний (беременность, лактация, диабет, онкологические заболевания, инфекционные заболевания, аллергия, дерматит, экзема, варикоз, повышенная кровоточивость и др.). Мастер вправе отказать в оказании услуг при наличии противопоказаний.</p>
+
+        <h3>6. Персональные данные</h3>
+        <p>Отправляя заявку, клиент даёт согласие на обработку персональных данных в соответствии с ФЗ-152 «О персональных данных».</p>
+
+        <h3>7. Контакты</h3>
+        <p>Телефон: +7 950 664-69-31<br>Telegram: @kseeeshca</p>
+      </div>
+    </div>
+
+    <!-- Соглашение -->
+    <div class="tab-content" id="tab-consent">
+      <div class="legal-text">
+        <h3>1. Общая информация о процедуре</h3>
+        <p>Я, нижеподписавшийся(аяся), подтверждаю, что по собственному добровольному и осознанному решению даю согласие на проведение процедуры нанесения татуировки — введение специальных пигментов в кожный покров на глубину примерно 0,3 – 1 мм с использованием профессионального тату-оборудования.</p>
+        <p>Процедура проводится:</p>
+        <ul>
+          <li>стерильными и одноразовыми расходными материалами (иглы, колпачки, барьерная защита);</li>
+          <li>профессиональной татуировочной машинкой;</li>
+          <li>с соблюдением санитарных и гигиенических норм.</li>
+        </ul>
+        <p>Все одноразовые материалы используются однократно и утилизируются после процедуры. Многоразовый инструмент проходит обязательную дезинфекцию и стерилизацию. Используемые пигменты предназначены исключительно для татуировки и соответствуют требованиям безопасности.</p>
+
+        <h3>2. Описание процесса</h3>
+        <p>Процедура включает следующие этапы:</p>
+        <ul>
+          <li>обработку рук мастера и рабочей зоны дезинфицирующими средствами, использование одноразовых перчаток;</li>
+          <li>подготовку кожи клиента (дезинфекция, при необходимости — удаление волос);</li>
+          <li>перенос согласованного эскиза на кожу;</li>
+          <li>нанесение татуировки с использованием стерильного оборудования;</li>
+          <li>очистку кожи и нанесение заживляющего средства по завершении процедуры;</li>
+          <li>предоставление рекомендаций по уходу за татуировкой.</li>
+        </ul>
+        <p>Процесс заживления полностью зависит от соблюдения клиентом рекомендаций по уходу.</p>
+
+        <h3>3. Возможные ощущения и побочные эффекты</h3>
+        <p>Мне разъяснено и понятно, что:</p>
+        <ul>
+          <li>во время процедуры возможны болевые ощущения различной интенсивности, зависящие от индивидуального болевого порога и зоны нанесения;</li>
+          <li>после процедуры возможны покраснение, отёчность, жжение кожи;</li>
+          <li>может наблюдаться временная усталость или повышение температуры тела до 37–37,5 °С в течение 2–24 часов.</li>
+        </ul>
+
+        <h3>4. Возможные осложнения</h3>
+        <p>При нарушении рекомендаций по уходу возможны: частичная потеря пигмента; воспаление или инфицирование; образование рубцов; необходимость коррекции. Степень риска считается низкой при соблюдении всех рекомендаций мастера.</p>
+
+        <h3>5. Противопоказания</h3>
+        <p>Я подтверждаю отсутствие следующих состояний либо осознаю возможные риски при их наличии:</p>
+        <ul>
+          <li>приём препаратов, влияющих на свёртываемость крови (аспирин, гепарин и др.);</li>
+          <li>ВИЧ/СПИД, венерические заболевания;</li>
+          <li>ослабленный иммунитет;</li>
+          <li>приём алкоголя менее чем за 72 часа до процедуры и в течение 5 дней после;</li>
+          <li>приём антибиотиков;</li>
+          <li>острые инфекционные заболевания (ОРВИ, грипп), а также менее 14 дней после выздоровления;</li>
+          <li>сахарный диабет;</li>
+          <li>онкологические заболевания, болезни крови и кожи;</li>
+          <li>наличие родинок, пигментных пятен в зоне нанесения.</li>
+        </ul>
+
+        <h3>6. Сроки заживления</h3>
+        <ul>
+          <li>5–7 дней — частичное восстановление верхнего слоя кожи;</li>
+          <li>2–4 недели — полное восстановление кожного покрова (при условии правильного ухода).</li>
+        </ul>
+
+        <h3>7. Ограничения</h3>
+        <ul>
+          <li>По эстетическим и профессиональным соображениям мастер вправе отказать в нанесении татуировки на лицо, голову и половые органы.</li>
+          <li>Мастер и студия не несут ответственности за осложнения, возникшие вследствие несоблюдения клиентом рекомендаций по уходу.</li>
+        </ul>
+
+        <h3>8. Согласие на фото- и видеосъёмку</h3>
+        <p>Я даю своё добровольное согласие на проведение фото- и видеосъёмки процесса и результата татуировки. Я разрешаю использование, хранение и публикацию полученных материалов (фото и видео) в социальных сетях, в портфолио мастера и рекламных материалах без указания моих персональных данных, если иное не оговорено отдельно. Настоящее согласие предоставляется без ограничения по сроку.</p>
+
+        <h3>Подтверждение согласия</h3>
+        <p>Я подтверждаю, что:</p>
+        <ul>
+          <li>ознакомлен(а) с информацией о процедуре;</li>
+          <li>получил(а) ответы на все интересующие меня вопросы;</li>
+          <li>осознаю возможные риски и последствия;</li>
+          <li>принимаю решение добровольно и без давления.</li>
+        </ul>
+        <p><em>ФИО, подпись и дата заполняются лично на сеансе.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>Ксеша | тату | Казань</strong></div>
+    <div class="footer-links">
+      <a onclick="scrollToBooking()">Записаться</a>
+      <a onclick="openGenerate()">Сгенерировать эскиз</a>
+      <a href="#legal">Документы</a>
+      <a href="tel:+79506646931">+7 950 664-69-31</a>
+      <a href="https://t.me/kseeeshca" target="_blank">@kseeeshca</a>
+    </div>
+    <div class="legal">
+      Самозанятая Львова Ксения Андреевна. Работаю в коворкингах: Казань, ул. Петербургская, 25В · СПб, Каменноостровский пр., 26-28.<br>
+      © 2026 Ксеша | тату. Все права защищены.
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="lightboxClick(event)">
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1, event)">‹</button>
+  <img id="lightboxImg" src="" alt="Работа">
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1, event)">›</button>
+</div>
+
+<div class="modal-overlay" id="allSectionsModal">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeAllSections()">✕</button>
+    <h2>Все <span class="accent">разделы</span></h2>
+    <p class="section-sub">Готовые эскизы по подборкам и блокам</p>
+    <div class="all-sections-grid" id="allSectionsGrid"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="generateModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeGenerate()">✕</button>
+    <h2>Сгенерировать эскиз</h2>
+    <p class="section-sub">Ответь на 9 вопросов — пришлю первый вариант в течение 24 часов. Бесплатно.</p>
+
+    <form id="generateForm" onsubmit="event.preventDefault()">
+      <div class="form-group">
+        <label>1. Что нужно сделать? *</label>
+        <select name="service" required>
+          <option value="">Выбери...</option>
+          <option>Постоянную татуировку</option>
+          <option>Перекрыть старую татуировку новой</option>
+          <option>Реставрировать татуировку</option>
+        </select>
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>2. Что изобразить? *</label>
+        <select name="subject" required>
+          <option value="">Выбери...</option>
+          <option>Рисунок</option>
+          <option>Текст</option>
+          <option>Иероглиф</option>
+          <option>Не знаю, нужна рекомендация</option>
+        </select>
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>3. В каком стиле? *</label>
+        <select name="style" required>
+          <option value="">Выбери...</option>
+          <option>Графика (мой основной стиль)</option>
+          <option>Хендпоук (мой основной стиль)</option>
+          <option>Реализм</option>
+          <option>Гравюра</option>
+          <option>Олд скул</option>
+          <option>Лайнворк</option>
+          <option>Акварель</option>
+          <option>Дотворк</option>
+          <option>Ориентал</option>
+          <option>Биомеханика</option>
+          <option>Минимализм</option>
+          <option>Решу после разговора со специалистом</option>
+        </select>
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>4. Какая татуировка? *</label>
+        <select name="color" required>
+          <option value="">Выбери...</option>
+          <option>Чёрно-белая</option>
+          <option>Цветная</option>
+        </select>
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>5. Где сделать тату? *</label>
+        <select name="place" required onchange="toggleOtherPlace(this)">
+          <option value="">Выбери...</option>
+          <option>Рука</option>
+          <option>Плечо</option>
+          <option>Запястье</option>
+          <option>Грудная клетка</option>
+          <option>Шея</option>
+          <option>Спина</option>
+          <option>Бедро</option>
+          <option>Ключица</option>
+          <option>Щиколотка</option>
+          <option>Поясница</option>
+          <option>Не знаю, хочу обсудить с мастером</option>
+          <option>Другое</option>
+        </select>
+        <input type="text" name="place_other" id="place_other" placeholder="Опиши место" style="display:none; margin-top:10px">
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>6. Какой размер? *</label>
+        <select name="size" required>
+          <option value="">Выбери...</option>
+          <option>Крупная (более 15 см)</option>
+          <option>Средняя (до 15 см)</option>
+          <option>Небольшая (до 5 см)</option>
+        </select>
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>7. Твой возраст *</label>
+        <select name="age" required>
+          <option value="">Выбери...</option>
+          <option>18 лет и старше</option>
+          <option>14–17 лет (с согласием родителей)</option>
+          <option>Младше 14 лет</option>
+        </select>
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>8. Что важно учесть? (можно несколько)</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Противопоказаний нет"> Противопоказаний нет</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Сахарный диабет 1 типа"> Сахарный диабет 1 типа</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Онкология"> Онкология</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Эпилепсия или астма"> Эпилепсия или астма</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="СПИД"> СПИД</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Беременность и роды"> Беременность и роды</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Склонность к образованию келоидных рубцов"> Склонность к образованию келоидных рубцов</label>
+          <label class="checkbox-item"><input type="checkbox" name="health" value="Другое" onchange="toggleOtherHealth(this)"> Другое</label>
+        </div>
+        <input type="text" name="health_other" id="health_other" placeholder="Опиши подробнее" style="display:none; margin-top:10px">
+      </div>
+
+      <div class="form-group">
+        <label>9. Когда нужна услуга? *</label>
+        <select name="when" required onchange="toggleCalendar(this)">
+          <option value="">Выбери...</option>
+          <option>В течение недели</option>
+          <option>Завтра</option>
+          <option>Выберу дни в календаре</option>
+          <option>Когда удобно специалисту</option>
+        </select>
+
+        <div class="date-picker" id="datePicker">
+          <div class="date-picker-header">
+            <button type="button" onclick="changeMonth(-1)">‹</button>
+            <span id="datePickerTitle">—</span>
+            <button type="button" onclick="changeMonth(1)">›</button>
+          </div>
+          <div class="date-picker-grid" id="datePickerGrid"></div>
+          <div class="date-picker-hint">Выбери 1–3 удобных дня</div>
+        </div>
+
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-group">
+        <label>Референсы (до 5 фото)</label>
+        <div class="file-drop" id="fileDrop">
+          <div class="file-drop-icon">📎</div>
+          <div>Перетащи фото сюда</div>
+          <div class="file-drop-hint">или выбери способ ниже</div>
+          <div class="file-buttons">
+            <button type="button" class="file-btn" onclick="document.getElementById('refFiles').click()">🖼️ С галереи</button>
+            <button type="button" class="file-btn" onclick="document.getElementById('refCamera').click()">📷 С камеры</button>
+          </div>
+        </div>
+        <input type="file" id="refFiles" accept="image/*" multiple style="display:none" onchange="handleFiles(this.files)">
+        <input type="file" id="refCamera" accept="image/*" capture="environment" style="display:none" onchange="handleFiles(this.files)">
+        <div class="file-list" id="fileList"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Опиши, как ты это чувствуешь или хочешь видеть</label>
+        <textarea name="description" placeholder="Например: животное в стиле dark fantasy, или эскиз по фото питомца, или абстрактные линии..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Имя *</label>
+          <input type="text" name="name" required placeholder="Как обращаться">
+          <div class="error-text">Это поле обязательно</div>
+        </div>
+        <div class="form-group">
+          <label>Ник в Telegram или Max *</label>
+          <input type="text" name="telegram" required placeholder="@username">
+          <div class="error-text">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="submit-buttons">
+        <button type="button" class="btn btn-tg" onclick="submitGenerate(event, 'telegram')">✈️ Получить эскиз в ТГ</button>
+        <button type="button" class="btn btn-max" onclick="submitGenerate(event, 'max')">💬 Получить эскиз в Max</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="flashModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeFlashBooking()">✕</button>
+    <h2>Забронировать эскиз</h2>
+    <p class="section-sub" id="flashName">—</p>
+
+    <form id="flashForm" onsubmit="event.preventDefault()">
+      <input type="hidden" name="flash_title" id="flashTitleInput">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Имя *</label>
+          <input type="text" name="name" required placeholder="Как к тебе обращаться">
+          <div class="error-text">Это поле обязательно</div>
+        </div>
+        <div class="form-group">
+          <label>Телефон *</label>
+          <input type="tel" name="phone" required placeholder="+7 ___ ___-__-__">
+          <div class="error-text">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Ник в Telegram или Max *</label>
+        <input type="text" name="telegram" required placeholder="@username">
+        <div class="error-text">Это поле обязательно</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Город *</label>
+          <select name="city" required>
+            <option value="">Выбери...</option>
+            <option>Казань</option>
+            <option>Санкт-Петербург</option>
+          </select>
+          <div class="error-text">Это поле обязательно</div>
+        </div>
+        <div class="form-group">
+          <label>Желаемая дата</label>
+          <input type="date" name="date">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Комментарий</label>
+        <textarea name="comment" placeholder="Место на теле, пожелания..."></textarea>
+      </div>
+
+      <div class="prepay-notice">
+        <strong>Предоплата 1 000 ₽</strong> идёт в счёт сеанса. Если не приходишь — не возвращается.
+      </div>
+
+      <div class="submit-buttons">
+        <button type="button" class="btn btn-tg" onclick="submitFlash(event, 'telegram')">✈️ Забронировать в ТГ</button>
+        <button type="button" class="btn btn-max" onclick="submitFlash(event, 'max')">💬 Забронировать в Max</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  НАСТРОЙКИ
+// ============================================================
+const TG_TOKEN = "8404543190:AAHJK5n4EWwC-pTf870y2BNv7NCpydPmcg0";
+const TG_CHAT_ID = "1449020333";
+const TG_PROXY = "https://kseesha-tattoo-bot.kseeenon2003.workers.dev";
+
+const MAX_LINK = "https://t.me/kseeeshca";
+const TG_LINK = "https://t.me/kseeeshca";
+
+// ============================================================
+//  ТАБЫ
+// ============================================================
+function openTab(tab, event) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+  event.target.classList.add("active");
+  document.getElementById("tab-" + tab).classList.add("active");
+}
+
+// ============================================================
+//  ПОРТФОЛИО
+// ============================================================
+const GALLERIES = {
+  works: ["work-1.jpg", "work-2.jpg", "work-3.jpg", "work-4.jpg"]
+};
+let currentGallery = [];
+let currentGalleryIndex = 0;
+
+function scrollCarousel(id, direction) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+}
+
+function openGallery(galleryKey, index) {
+  currentGallery = GALLERIES[galleryKey] || [];
+  if (!currentGallery.length) return;
+  currentGalleryIndex = index;
+  showLightboxImage();
+  document.getElementById("lightbox").classList.add("open");
+}
+
+function openLightbox(src) {
+  currentGallery = [src];
+  currentGalleryIndex = 0;
+  showLightboxImage();
+  document.getElementById("lightbox").classList.add("open");
+}
+
+function showLightboxImage() {
+  document.getElementById("lightboxImg").src = currentGallery[currentGalleryIndex];
+}
+
+function lightboxNav(direction, e) {
+  e.stopPropagation();
+  currentGalleryIndex = (currentGalleryIndex + direction + currentGallery.length) % currentGallery.length;
+  showLightboxImage();
+}
+
+function lightboxClick(e) {
+  if (e.target.id === "lightbox") {
+    document.getElementById("lightbox").classList.remove("open");
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  const lb = document.getElementById("lightbox");
+  if (lb.classList.contains("open")) {
+    if (e.key === "Escape") lb.classList.remove("open");
+    if (e.key === "ArrowLeft") lightboxNav(-1, { stopPropagation: () => {} });
+    if (e.key === "ArrowRight") lightboxNav(1, { stopPropagation: () => {} });
+  } else if (e.key === "Escape") {
+    closeGenerate();
+    closeFlashBooking();
+    closeAllSections();
+  }
+});
+
+// ============================================================
+//  ЭСКИЗ НЕДЕЛИ
+// ============================================================
+const WEEK_FLASH = null; // Поставь объект, когда появится эскиз
+
+function renderWeekFlash() {
+  const el = document.getElementById("weekFlash");
+  if (!WEEK_FLASH) { el.style.display = "none"; return; }
+  el.style.display = "grid";
+  document.getElementById("weekFlashImg").querySelector("img").src = WEEK_FLASH.img;
+  document.getElementById("weekFlashTitle").textContent = WEEK_FLASH.title;
+  document.getElementById("weekFlashDesc").textContent = WEEK_FLASH.desc;
+  document.getElementById("weekFlashOld").textContent = WEEK_FLASH.oldPrice;
+  document.getElementById("weekFlashNew").textContent = WEEK_FLASH.price;
+}
+
+// ============================================================
+//  ТЕМЫ FLASH
+// ============================================================
+const FLASH_THEMES = {
+  animals: {
+    name: "Животные", icon: "🐾",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      cats: { name: "Коты", items: [] },
+      dogs: { name: "Собаки", items: [] },
+      snakes: { name: "Змеи", items: [] },
+      frogs: { name: "Лягушки (чб, цветные)", items: [] },
+      birds: { name: "Птицы", items: [] },
+      insects: { name: "Насекомые", items: [] },
+      sea: { name: "Морские", items: [] },
+      mythic: { name: "Мифические", items: [] },
+      dino: { name: "Динозавры (чб, цветные)", items: [] },
+      dark: { name: "В стиле дарк", items: [] }
+    }
+  },
+  insects: {
+    name: "Насекомые", icon: "🦋",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      butterflies: { name: "Бабочки", items: [] },
+      beetles: { name: "Жуки", items: [] },
+      spiders: { name: "Пауки", items: [] },
+      bees: { name: "Пчёлы и осы", items: [] },
+      dragonflies: { name: "Стрекозы", items: [] }
+    }
+  },
+  sea: {
+    name: "Море и океан", icon: "🌊",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      fish: { name: "Рыбы", items: [] },
+      whales: { name: "Киты и дельфины", items: [] },
+      octopus: { name: "Осьминоги и кальмары", items: [] },
+      jellyfish: { name: "Медузы", items: [] },
+      shells: { name: "Ракушки и кораллы", items: [] },
+      mythic: { name: "Мифические", items: [] },
+      waves: { name: "Волны и вода", items: [] },
+      lighthouses: { name: "Маяки и корабли", items: [] }
+    }
+  },
+  flowers: {
+    name: "Цветы и растения", icon: "🌸",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      roses: { name: "Розы", items: [] },
+      peonies: { name: "Пионы и маки", items: [] },
+      lilies: { name: "Лилии и ирисы", items: [] },
+      lotuses: { name: "Лотосы", items: [] },
+      field: { name: "Полевые", items: [] },
+      branches: { name: "Ветки и листья", items: [] },
+      poisonous: { name: "Ядовитые", items: [] }
+    }
+  },
+  hearts: {
+    name: "Сердца", icon: "🖤",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      classic: { name: "Классические", items: [] },
+      broken: { name: "Разбитые", items: [] },
+      with_text: { name: "С надписями", items: [] },
+      dagger: { name: "Стрела и кинжал", items: [] },
+      anatomy: { name: "Анатомические", items: [] },
+      dark: { name: "В стиле дарк", items: [] },
+      pair: { name: "Парные", items: [] }
+    }
+  },
+  eyes: {
+    name: "Глаза", icon: "👁️",
+    subthemes: {
+      all: { name: "Все", items: [] }
+    }
+  },
+  dark: {
+    name: "Дарк-стиль", icon: "🖤",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      skulls: { name: "Черепа", items: [] },
+      bones: { name: "Кости и скелеты", items: [] },
+      gothic: { name: "Готика", items: [] },
+      occult: { name: "Оккультизм", items: [] },
+      mystique: { name: "Мистика", items: [] },
+      horror: { name: "Хоррор", items: [] }
+    }
+  },
+  symbols: {
+    name: "Символы и знаки", icon: "✨",
+    subthemes: {
+      all: { name: "Все", items: [] },
+      astrology: { name: "Астрология", items: [] },
+      moon_sun: { name: "Луна и Солнце", items: [] },
+      runes: { name: "Руны и иероглифы", items: [] },
+      geometry: { name: "Геометрия", items: [] },
+      tarot: { name: "Карты Таро", items: [] },
+      celtic: { name: "Кельтские", items: [] },
+      slavic: { name: "Славянские", items: [] }
+    }
+  }
+};
+
+let currentThemeKey = null;
+let currentSubthemeKey = "all";
+
+function countThemeItems(theme) {
+  let total = 0;
+  Object.values(theme.subthemes).forEach(s => {
+    if (s.items) total += s.items.length;
+  });
+  return total;
+}
+
+function renderThemes() {
+  const grid = document.getElementById("themesGrid");
+  grid.innerHTML = "";
+  Object.keys(FLASH_THEMES).forEach(key => {
+    const t = FLASH_THEMES[key];
+    const total = countThemeItems(t);
+    const card = document.createElement("div");
+    card.className = "theme-card";
+    card.innerHTML =
+      '<span class="theme-icon">' + t.icon + '</span>' +
+      '<h3>' + t.name + '</h3>' +
+      '<div class="theme-count">' + (total > 0 ? total + " эскизов" : "скоро") + '</div>';
+    card.addEventListener("click", () => openTheme(key));
+    grid.appendChild(card);
+  });
+}
+
+function openTheme(key) {
+  currentThemeKey = key;
+  currentSubthemeKey = "all";
+  document.getElementById("themesView").style.display = "none";
+  document.getElementById("themeView").style.display = "block";
+  document.getElementById("themeTitle").textContent = FLASH_THEMES[key].name;
+  renderSubthemes();
+  renderFlashItems();
+}
+
+function backToThemes() {
+  currentThemeKey = null;
+  document.getElementById("themesView").style.display = "block";
+  document.getElementById("themeView").style.display = "none";
+}
+
+function renderSubthemes() {
+  const row = document.getElementById("subthemesRow");
+  row.innerHTML = "";
+  const subs = FLASH_THEMES[currentThemeKey].subthemes;
+  Object.keys(subs).forEach(key => {
+    const chip = document.createElement("button");
+    chip.className = "subtheme-chip" + (key === currentSubthemeKey ? " active" : "");
+    chip.textContent = subs[key].name;
+    chip.addEventListener("click", () => {
+      currentSubthemeKey = key;
+      renderSubthemes();
+      renderFlashItems();
+    });
+    row.appendChild(chip);
+  });
+}
+
+function renderFlashItems() {
+  const grid = document.getElementById("flashGrid");
+  grid.innerHTML = "";
+  const subs = FLASH_THEMES[currentThemeKey].subthemes;
+  let items = [];
+
+  if (currentSubthemeKey === "all") {
+    Object.values(subs).forEach(s => {
+      if (s.items) items = items.concat(s.items);
+    });
+  } else {
+    items = subs[currentSubthemeKey].items || [];
+  }
+
+  if (!items.length) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #8888a0; padding: 40px 20px; background: #16162a; border-radius: 16px; border: 1px dashed rgba(183,148,246,0.3);">✨ Эскизы в этой категории скоро появятся. Пока могу нарисовать индивидуально — оставь заявку.</div>';
+    return;
+  }
+
+  items.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "flash";
+    const hasImg = !!item.img;
+    card.innerHTML =
+      '<div class="flash-img' + (hasImg ? ' has-img' : '') + '"' + (hasImg ? ' onclick="openLightbox(\'' + item.img + '\')"' : '') + '>' +
+        (hasImg ? '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">' : '') +
+      '</div>' +
+      '<div class="flash-info">' +
+        '<h4>' + item.title + '</h4>' +
+        '<p>' + item.desc + '</p>' +
+        '<div class="flash-price">' + item.price + '</div>' +
+        '<button class="btn btn-primary" onclick="openFlashBooking(\'' + item.title + '\')">Забронировать</button>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
+function applyFilter(filter, btn) {
+  document.querySelectorAll(".filter-chip").forEach(el => el.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+renderThemes();
+renderWeekFlash();
+
+// ============================================================
+//  ВСЕ РАЗДЕЛЫ
+// ============================================================
+const ALL_SECTIONS = [
+  { icon: "🔥", title: "Эскиз недели", desc: "Один эскиз со скидкой −20% до конца недели" },
+  { icon: "🎁", title: "Готовый эскиз + адаптация", desc: "Возьму готовый эскиз и адаптирую под твою анатомию" },
+  { icon: "📸", title: "Эскиз → Результат", desc: "Фото эскиза и готовой татуировки рядом" },
+  { icon: "🎯", title: "Подборка под место", desc: "Эскизы под запястье, предплечье, спину и т.д." },
+  { icon: "🖤", title: "Парные эскизы", desc: "Для пар, мама+ребёнок, близнецов" },
+  { icon: "💰", title: "До 4 000 ₽", desc: "Мини-тату и недорогие эскизы" },
+  { icon: "🗓️", title: "Свободно на этой неделе", desc: "Эскизы, которые можно забронировать за 7 дней" },
+  { icon: "🆕", title: "Новинки", desc: "Последние нарисованные эскизы" },
+  { icon: "🏆", title: "Хиты", desc: "Самые популярные эскизы" },
+  { icon: "🎨", title: "Собери свой", desc: "Конструктор эскиза: элемент + стиль + место" },
+  { icon: "📚", title: "Архив (проданные)", desc: "Эскизы, которые уже нашли своих хозяев" },
+  { icon: "💌", title: "Заказ эскиза по фото", desc: "Пришли фото — нарисую эскиз по нему" }
+];
+
+function openAllSections() {
+  const grid = document.getElementById("allSectionsGrid");
+  grid.innerHTML = "";
+  ALL_SECTIONS.forEach(s => {
+    const block = document.createElement("div");
+    block.className = "section-block";
+    block.innerHTML =
+      '<div class="block-icon">' + s.icon + '</div>' +
+      '<h4>' + s.title + '</h4>' +
+      '<p>' + s.desc + '</p>';
+    block.addEventListener("click", () => {
+      alert("Раздел «" + s.title + "» появится по мере наполнения эскизами. Пока можешь оставить заявку на индивидуальный эскиз.");
+    });
+    grid.appendChild(block);
+  });
+  document.getElementById("allSectionsModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeAllSections() {
+  document.getElementById("allSectionsModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+document.getElementById("allSectionsModal").addEventListener("click", (e) => {
+  if (e.target.id === "allSectionsModal") closeAllSections();
+});
+
+// ============================================================
+//  МОДАЛКИ
+// ============================================================
+function openGenerate() {
+  document.getElementById("generateModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeGenerate() {
+  document.getElementById("generateModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+document.getElementById("generateModal").addEventListener("click", (e) => {
+  if (e.target.id === "generateModal") closeGenerate();
+});
+
+function openFlashBooking(title) {
+  document.getElementById("flashName").textContent = "Эскиз: " + title;
+  document.getElementById("flashTitleInput").value = title;
+  document.getElementById("flashModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeFlashBooking() {
+  document.getElementById("flashModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+document.getElementById("flashModal").addEventListener("click", (e) => {
+  if (e.target.id === "flashModal") closeFlashBooking();
+});
+
+function scrollToBooking() {
+  document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+}
+
+// ============================================================
+//  ПЕРЕКЛЮЧАТЕЛИ
+// ============================================================
+function toggleOtherPlace(select) {
+  const input = document.getElementById("place_other");
+  if (select.value === "Другое") input.style.display = "block";
+  else { input.style.display = "none"; input.value = ""; }
+}
+
+function toggleOtherHealth(cb) {
+  const input = document.getElementById("health_other");
+  if (cb.checked) input.style.display = "block";
+  else { input.style.display = "none"; input.value = ""; }
+}
+
+function toggleCalendar(select) {
+  const picker = document.getElementById("datePicker");
+  if (select.value === "Выберу дни в календаре") {
+    picker.classList.add("show");
+    renderDatePicker();
+  } else {
+    picker.classList.remove("show");
+    selectedDates.clear();
+  }
+}
+
+document.querySelectorAll(".checkbox-item input").forEach(cb => {
+  cb.addEventListener("change", () => {
+    cb.closest(".checkbox-item").classList.toggle("checked", cb.checked);
+  });
+});
+
+// ============================================================
+//  ФАЙЛЫ
+// ============================================================
+let attachedFiles = [];
+
+function handleFiles(fileList) {
+  const files = Array.from(fileList).slice(0, 5 - attachedFiles.length);
+  attachedFiles = attachedFiles.concat(files).slice(0, 5);
+  renderFileList();
+}
+
+function renderFileList() {
+  const list = document.getElementById("fileList");
+  list.innerHTML = "";
+  attachedFiles.forEach((f, i) => {
+    const chip = document.createElement("div");
+    chip.className = "file-chip";
+    chip.innerHTML = "📎 " + f.name + ' <button type="button" onclick="removeFile(' + i + ')">✕</button>';
+    list.appendChild(chip);
+  });
+}
+
+function removeFile(i) {
+  attachedFiles.splice(i, 1);
+  renderFileList();
+}
+
+const fileDrop = document.getElementById("fileDrop");
+if (fileDrop) {
+  ["dragenter", "dragover"].forEach(ev => {
+    fileDrop.addEventListener(ev, (e) => {
+      e.preventDefault();
+      fileDrop.classList.add("dragover");
+    });
+  });
+  ["dragleave", "drop"].forEach(ev => {
+    fileDrop.addEventListener(ev, (e) => {
+      e.preventDefault();
+      fileDrop.classList.remove("dragover");
+    });
+  });
+  fileDrop.addEventListener("drop", (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
+  });
+}
+
+// ============================================================
+//  КАЛЕНДАРЬ
+// ============================================================
+let pickerYear = new Date().getFullYear();
+let pickerMonth = new Date().getMonth();
+const selectedDates = new Set();
+const MAX_DATES = 3;
+const monthNamesRu = ["Январь","Февраль","Март","Апрель","Май","Июнь",
+                     "Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+
+function renderDatePicker() {
+  const title = document.getElementById("datePickerTitle");
+  const grid = document.getElementById("datePickerGrid");
+  if (!title || !grid) return;
+  title.textContent = monthNamesRu[pickerMonth] + " " + pickerYear;
+  grid.innerHTML = "";
+  ["Пн","Вт","Ср","Чт","Пт","Сб","Вс"].forEach(n => {
+    const el = document.createElement("div");
+    el.className = "date-picker-dow";
+    el.textContent = n;
+    grid.appendChild(el);
+  });
+  const first = new Date(pickerYear, pickerMonth, 1);
+  const offset = (first.getDay() + 6) % 7;
+  for (let i = 0; i < offset; i++) {
+    const el = document.createElement("div");
+    el.className = "date-picker-day disabled";
+    grid.appendChild(el);
+  }
+  const daysInMonth = new Date(pickerYear, pickerMonth + 1, 0).getDate();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(pickerYear, pickerMonth, d);
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const dateStr = y + "-" + m + "-" + day;
+    const el = document.createElement("div");
+    el.className = "date-picker-day";
+    el.textContent = d;
+    el.dataset.date = dateStr;
+    if (date < today) {
+      el.classList.add("disabled");
+    } else {
+      if (selectedDates.has(dateStr)) el.classList.add("selected");
+      el.addEventListener("click", () => {
+        if (selectedDates.has(dateStr)) selectedDates.delete(dateStr);
+        else {
+          if (selectedDates.size >= MAX_DATES) { alert("Можно выбрать максимум 3 дня"); return; }
+          selectedDates.add(dateStr);
+        }
+        renderDatePicker();
+      });
+    }
+    grid.appendChild(el);
+  }
+}
+
+function changeMonth(delta) {
+  pickerMonth += delta;
+  if (pickerMonth < 0) { pickerMonth = 11; pickerYear--; }
+  if (pickerMonth > 11) { pickerMonth = 0; pickerYear++; }
+  renderDatePicker();
+}
+
+// ============================================================
+//  ВАЛИДАЦИЯ
+// ============================================================
+function validateForm(form) {
+  let hasError = false;
+  const required = form.querySelectorAll("[required]");
+  required.forEach(field => {
+    const group = field.closest(".form-group");
+    if (!group) return;
+    group.classList.remove("has-error");
+    field.classList.remove("error");
+    if (!field.value.trim()) {
+      group.classList.add("has-error");
+      field.classList.add("error");
+      hasError = true;
+    }
+  });
+  if (hasError) {
+    const firstError = form.querySelector(".has-error");
+    if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+    return false;
+  }
+  return true;
+}
+
+document.addEventListener("input", (e) => {
+  if (e.target.matches("[required]")) {
+    const group = e.target.closest(".form-group");
+    if (group && e.target.value.trim()) {
+      group.classList.remove("has-error");
+      e.target.classList.remove("error");
+    }
+  }
+});
+
+// ============================================================
+//  ОТПРАВКА В TELEGRAM ЧЕРЕЗ WORKER
+// ============================================================
+async function sendToTelegram(text) {
+  const url = TG_PROXY + "/bot" + TG_TOKEN + "/sendMessage";
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TG_CHAT_ID,
+        text: text,
+        parse_mode: "HTML"
+      })
+    });
+    return res.ok;
+  } catch (e) {
+    console.error("Ошибка отправки:", e);
+    return false;
+  }
+}
+
+// ============================================================
+//  ОТПРАВКА ЗАЯВКИ НА ЭСКИЗ
+// ============================================================
+async function submitGenerate(e, messenger) {
+  e.preventDefault();
+  const f = document.getElementById("generateForm");
+  if (!validateForm(f)) return;
+
+  const health = Array.from(f.querySelectorAll('input[name="health"]:checked'))
+    .map(c => c.value).join(", ") || "не указано";
+  const selectedDatesStr = Array.from(selectedDates).sort().join(", ") || "не выбрано";
+  const otherPlace = document.getElementById("place_other").value || "";
+  const otherHealth = document.getElementById("health_other").value || "";
+  const filesInfo = attachedFiles.length ? attachedFiles.map(file => file.name).join(", ") : "нет";
+
+  const text =
+    "🎨 <b>НОВАЯ ЗАЯВКА НА ЭСКИЗ</b>\n" +
+    "<i>Способ связи: " + (messenger === "telegram" ? "Telegram" : "Max") + "</i>\n\n" +
+    "1. <b>Услуга:</b> " + f.service.value + "\n" +
+    "2. <b>Изобразить:</b> " + f.subject.value + "\n" +
+    "3. <b>Стиль:</b> " + f.style.value + "\n" +
+    "4. <b>Цвет:</b> " + f.color.value + "\n" +
+    "5. <b>Место:</b> " + f.place.value + (otherPlace ? " → " + otherPlace : "") + "\n" +
+    "6. <b>Размер:</b> " + f.size.value + "\n" +
+    "7. <b>Возраст:</b> " + f.age.value + "\n" +
+    "8. <b>Здоровье:</b> " + health + (otherHealth ? " → " + otherHealth : "") + "\n" +
+    "9. <b>Когда:</b> " + f.when.value + (selectedDates.size ? " → " + selectedDatesStr : "") + "\n" +
+    "📎 <b>Референсы:</b> " + filesInfo + "\n\n" +
+    "📝 <b>Описание:</b>\n" + (f.description.value || "—") + "\n\n" +
+    "👤 <b>Имя:</b> " + f.name.value + "\n" +
+    "💬 <b>TG/Max:</b> " + f.telegram.value;
+
+  const ok = await sendToTelegram(text);
+
+  if (ok) {
+    const link = messenger === "telegram" ? TG_LINK : MAX_LINK;
+    const msg = "Здравствуйте! Я отправила заявку на эскиз через сайт. Мой ник: " + f.telegram.value;
+    window.open(link + "?text=" + encodeURIComponent(msg), "_blank");
+    alert("✅ Заявка отправлена! Открываю " + (messenger === "telegram" ? "Telegram" : "Max") + " — напиши мне, и я пришлю эскиз.");
+    resetGenerateForm();
+    closeGenerate();
+  } else {
+    alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
+  }
+}
+
+function resetGenerateForm() {
+  document.getElementById("generateForm").reset();
+  selectedDates.clear();
+  attachedFiles = [];
+  renderFileList();
+  document.getElementById("place_other").style.display = "none";
+  document.getElementById("health_other").style.display = "none";
+  document.getElementById("datePicker").classList.remove("show");
+  document.querySelectorAll(".checkbox-item").forEach(el => el.classList.remove("checked"));
+}
+
+// ============================================================
+//  ОТПРАВКА БРОНИ FLASH
+// ============================================================
+async function submitFlash(e, messenger) {
+  e.preventDefault();
+  const f = document.getElementById("flashForm");
+  if (!validateForm(f)) return;
+
+  const text =
+    "🎨 <b>БРОНЬ СВОБОДНОГО ЭСКИЗА</b>\n" +
+    "<i>Способ связи: " + (messenger === "telegram" ? "Telegram" : "Max") + "</i>\n\n" +
+    "🖼️ <b>Эскиз:</b> " + f.flash_title.value + "\n" +
+    "👤 <b>Имя:</b> " + f.name.value + "\n" +
+    "📞 <b>Телефон:</b> " + f.phone.value + "\n" +
+    "💬 <b>TG/Max:</b> " + f.telegram.value + "\n" +
+    "📍 <b>Город:</b> " + f.city.value + "\n" +
+    "📆 <b>Дата:</b> " + (f.date.value || "не указана") + "\n\n" +
+    "📝 <b>Комментарий:</b>\n" + (f.comment.value || "—");
+
+  const ok = await sendToTelegram(text);
+
+  if (ok) {
+    const link = messenger === "telegram" ? TG_LINK : MAX_LINK;
+    const msg = "Здравствуйте! Хочу забронировать эскиз «" + f.flash_title.value + "». Мой ник: " + f.telegram.value;
+    window.open(link + "?text=" + encodeURIComponent(msg), "_blank");
+    alert("✅ Бронь оформлена! Открываю " + (messenger === "telegram" ? "Telegram" : "Max") + " — напиши мне, обсудим детали.");
+    f.reset();
+    closeFlashBooking();
+  } else {
+    alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
+  }
+}
+
+// ============================================================
+//  ОТПРАВКА ЗАЯВКИ НА СЕАНС
+// ============================================================
+async function submitBooking(e, messenger) {
+  e.preventDefault();
+  const f = document.getElementById("bookingForm");
+  if (!validateForm(f)) return;
+
+  const text =
+    "📅 <b>НОВАЯ ЗАЯВКА НА СЕАНС</b>\n" +
+    "<i>Способ связи: " + (messenger === "telegram" ? "Telegram" : "Max") + "</i>\n\n" +
+    "👤 <b>Имя:</b> " + f.name.value + "\n" +
+    "📞 <b>Телефон:</b> " + f.phone.value + "\n" +
+    "💬 <b>TG/Max:</b> " + f.telegram.value + "\n" +
+    "📆 <b>Дата:</b> " + (f.date.value || "не указана") + "\n" +
+    "📍 <b>Город:</b> " + f.city.value + "\n" +
+    "🎯 <b>Свободный эскиз:</b> " + f.flash.value + "\n\n" +
+    "📝 <b>Комментарий:</b>\n" + (f.comment.value || "—");
+
+  const ok = await sendToTelegram(text);
+
+  if (ok) {
+    const link = messenger === "telegram" ? TG_LINK : MAX_LINK;
+    const msg = "Здравствуйте! Я оставила заявку на сеанс через сайт. Мой ник: " + f.telegram.value;
+    window.open(link + "?text=" + encodeURIComponent(msg), "_blank");
+    alert("✅ Заявка отправлена! Открываю " + (messenger === "telegram" ? "Telegram" : "Max") + " — напиши мне, обсудим детали.");
+    f.reset();
+  } else {
+    alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
+  }
+}
+</script>
+
+</body>
+</html>
