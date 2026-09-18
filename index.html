@@ -1907,6 +1907,9 @@ document.getElementById("allSectionsModal").addEventListener("click", (e) => {
 //  МОДАЛКИ
 // ============================================================
 function openGenerate() {
+  // Сначала очищаем всё — на случай, если осталось с прошлого раза
+  resetGenerateForm();
+  // Потом открываем
   document.getElementById("generateModal").classList.add("open");
   document.body.style.overflow = "hidden";
 }
