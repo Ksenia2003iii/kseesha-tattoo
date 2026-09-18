@@ -1913,6 +1913,8 @@ function openGenerate() {
 function closeGenerate() {
   document.getElementById("generateModal").classList.remove("open");
   document.body.style.overflow = "";
+  // Очищаем всё, что было введено
+  resetGenerateForm();
 }
 document.getElementById("generateModal").addEventListener("click", (e) => {
   if (e.target.id === "generateModal") closeGenerate();
@@ -1927,6 +1929,8 @@ function openFlashBooking(title) {
 function closeFlashBooking() {
   document.getElementById("flashModal").classList.remove("open");
   document.body.style.overflow = "";
+  // Очищаем форму
+  document.getElementById("flashForm").reset();
 }
 document.getElementById("flashModal").addEventListener("click", (e) => {
   if (e.target.id === "flashModal") closeFlashBooking();
@@ -2537,6 +2541,14 @@ if (window.location.search.includes("admin=1")) {
 //  СТАРТ
 // ============================================================
 refreshFlashItems();
+
+// ============================================================
+//  АВТООЧИСТКА ФОРМ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+// ============================================================
+window.addEventListener("load", () => {
+  const bookingForm = document.getElementById("bookingForm");
+  if (bookingForm) bookingForm.reset();
+});
 </script>
 
 </body>
