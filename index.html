@@ -653,6 +653,52 @@
   }
   .admin-close:hover { background: rgba(255,255,255,0.2); }
 
+  /* КНОПКА НАВЕРХ */
+  .scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b794f6, #9f7aea);
+    color: #0f0f1a;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(183,148,246,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    z-index: 500;
+  }
+  .scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .scroll-top-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(183,148,246,0.6);
+  }
+  .scroll-top-btn:active {
+    transform: translateY(-2px) scale(0.95);
+  }
+  @media (max-width: 768px) {
+    .scroll-top-btn {
+      width: 46px;
+      height: 46px;
+      bottom: 16px;
+      right: 16px;
+      font-size: 20px;
+    }
+  }
+
   @media (max-width: 768px) {
     section { padding: 50px 0; }
     h2 { font-size: 26px; }
@@ -1130,6 +1176,9 @@
   </div>
 </footer>
 
+<!-- КНОПКА НАВЕРХ -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" aria-label="Наверх">↑</button>
+
 <!-- ЛАЙТБОКС -->
 <div class="lightbox" id="lightbox" onclick="lightboxClick(event)">
   <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1, event)">‹</button>
@@ -1392,7 +1441,6 @@
   <button class="admin-close" onclick="closeAdmin()">✕</button>
   <div class="admin-inner">
 
-    <!-- ЛОГИН -->
     <div class="admin-login" id="adminLogin">
       <h2>🔐 Вход в админку</h2>
       <p style="color: #8888a0; margin-bottom: 20px;">Введи пароль</p>
@@ -1402,7 +1450,6 @@
       <div class="error" id="adminError" style="display:none;">Неверный пароль</div>
     </div>
 
-    <!-- АДМИНКА -->
     <div id="adminPanel" style="display:none;">
       <h2>🎨 Загрузить эскиз</h2>
 
@@ -1636,7 +1683,6 @@ async function loadFlashFromAirtable() {
   }
 }
 
-// Обновить список эскизов на сайте
 async function refreshFlashItems() {
   allFlashItems = await loadFlashFromAirtable();
   renderThemes();
@@ -1727,7 +1773,6 @@ function renderWeekFlash() {
   document.getElementById("weekFlashTitle").textContent = weekItem.title;
   document.getElementById("weekFlashDesc").textContent = weekItem.desc;
 
-  // Расчёт цены со скидкой
   const priceNum = parseInt(String(weekItem.price).replace(/\D/g, "")) || 0;
   if (priceNum > 0) {
     const newPrice = Math.round(priceNum * 0.8);
@@ -1907,16 +1952,13 @@ document.getElementById("allSectionsModal").addEventListener("click", (e) => {
 //  МОДАЛКИ
 // ============================================================
 function openGenerate() {
-  // Сначала очищаем всё — на случай, если осталось с прошлого раза
   resetGenerateForm();
-  // Потом открываем
   document.getElementById("generateModal").classList.add("open");
   document.body.style.overflow = "hidden";
 }
 function closeGenerate() {
   document.getElementById("generateModal").classList.remove("open");
   document.body.style.overflow = "";
-  // Очищаем всё, что было введено
   resetGenerateForm();
 }
 document.getElementById("generateModal").addEventListener("click", (e) => {
@@ -1932,7 +1974,6 @@ function openFlashBooking(title) {
 function closeFlashBooking() {
   document.getElementById("flashModal").classList.remove("open");
   document.body.style.overflow = "";
-  // Очищаем форму
   document.getElementById("flashForm").reset();
 }
 document.getElementById("flashModal").addEventListener("click", (e) => {
@@ -2201,12 +2242,12 @@ async function submitGenerate(e, messenger) {
     "👤 <b>Имя:</b> " + f.name.value + "\n" +
     "💬 <b>TG/Max:</b> " + f.telegram.value;
 
- let ok = false;
-if (messenger === "telegram") {
-  ok = await sendToTelegram(text);
-} else {
-  ok = await sendToMax(text);
-}
+  let ok = false;
+  if (messenger === "telegram") {
+    ok = await sendToTelegram(text);
+  } else {
+    ok = await sendToMax(text);
+  }
 
   if (ok) {
     alert("✅ Заявка отправлена! Я свяжусь с вами в течение 24 часов — пришлю первый вариант эскиза.");
@@ -2248,11 +2289,11 @@ async function submitFlash(e, messenger) {
     "📝 <b>Комментарий:</b>\n" + (f.comment.value || "—");
 
   let ok = false;
-if (messenger === "telegram") {
-  ok = await sendToTelegram(text);
-} else {
-  ok = await sendToMax(text);
-}
+  if (messenger === "telegram") {
+    ok = await sendToTelegram(text);
+  } else {
+    ok = await sendToMax(text);
+  }
 
   if (ok) {
     alert("✅ Бронь оформлена! Я свяжусь с вами в ближайшее время, чтобы подтвердить дату.");
@@ -2283,11 +2324,11 @@ async function submitBooking(e, messenger) {
     "📝 <b>Комментарий:</b>\n" + (f.comment.value || "—");
 
   let ok = false;
-if (messenger === "telegram") {
-  ok = await sendToTelegram(text);
-} else {
-  ok = await sendToMax(text);
-}
+  if (messenger === "telegram") {
+    ok = await sendToTelegram(text);
+  } else {
+    ok = await sendToMax(text);
+  }
 
   if (ok) {
     alert("✅ Заявка отправлена! Я свяжусь с вами в течение дня, чтобы подтвердить дату и обсудить детали.");
@@ -2325,7 +2366,6 @@ function openAdmin() {
 function closeAdmin() {
   document.getElementById("adminModal").classList.remove("open");
   document.body.style.overflow = "";
-  // Сброс
   document.getElementById("adminPassword").value = "";
   document.getElementById("adminLogin").style.display = "block";
   document.getElementById("adminPanel").style.display = "none";
@@ -2351,7 +2391,6 @@ function updateAdminSubthemes() {
   if (!themeKey) return;
   const subs = FLASH_THEMES[themeKey].subthemes;
   Object.keys(subs).forEach(key => {
-    // Пропускаем "Все"
     if (key === "all") return;
     const opt = document.createElement("option");
     opt.value = key;
@@ -2364,7 +2403,6 @@ function handleAdminFile(files) {
   if (!files || !files[0]) return;
   adminFile = files[0];
 
-  // Показать превью
   const reader = new FileReader();
   reader.onload = (e) => {
     document.getElementById("admPreview").innerHTML = '<img src="' + e.target.result + '" alt="Превью">';
@@ -2372,7 +2410,6 @@ function handleAdminFile(files) {
   reader.readAsDataURL(adminFile);
 }
 
-// Drag & drop для файла админки
 const admDrop = document.getElementById("admFileDrop");
 if (admDrop) {
   ["dragenter", "dragover"].forEach(ev => {
@@ -2393,7 +2430,6 @@ if (admDrop) {
   });
 }
 
-// Загрузка фото в Cloudinary
 async function uploadToCloudinary(file) {
   const url = "https://api.cloudinary.com/v1_1/" + CLOUD_NAME + "/image/upload";
   const formData = new FormData();
@@ -2409,7 +2445,6 @@ async function uploadToCloudinary(file) {
   return data.secure_url;
 }
 
-// Сохранение эскиза в Airtable
 async function saveFlashItem() {
   const title = document.getElementById("admTitle").value.trim();
   const desc = document.getElementById("admDesc").value.trim();
@@ -2428,12 +2463,9 @@ async function saveFlashItem() {
   btn.disabled = true;
 
   try {
-    // 1. Загрузка фото в Cloudinary
     const imageUrl = await uploadToCloudinary(adminFile);
-
     btn.textContent = "⏳ Сохраняю в базу...";
 
-    // 2. Сохранение в Airtable
     const themeName = FLASH_THEMES[themeKey].name;
     const subthemeName = FLASH_THEMES[themeKey].subthemes[subthemeKey].name;
 
@@ -2459,13 +2491,11 @@ async function saveFlashItem() {
 
     if (!airtableRes.ok) throw new Error("Airtable save failed");
 
-    // Успех
     document.getElementById("admSaved").style.display = "block";
     setTimeout(() => {
       document.getElementById("admSaved").style.display = "none";
     }, 4000);
 
-    // Сброс формы
     document.getElementById("admTitle").value = "";
     document.getElementById("admDesc").value = "";
     document.getElementById("admPrice").value = "";
@@ -2476,7 +2506,6 @@ async function saveFlashItem() {
     document.getElementById("admFile").value = "";
     adminFile = null;
 
-    // Обновить список
     loadAdminList();
     refreshFlashItems();
 
@@ -2489,7 +2518,6 @@ async function saveFlashItem() {
   }
 }
 
-// Загрузка списка эскизов в админке
 async function loadAdminList() {
   const listEl = document.getElementById("admList");
   listEl.innerHTML = "Загрузка...";
@@ -2515,7 +2543,6 @@ async function loadAdminList() {
   });
 }
 
-// Удаление эскиза
 async function deleteFlashItem(recordId) {
   if (!confirm("Удалить этот эскиз?")) return;
 
@@ -2544,6 +2571,23 @@ if (window.location.search.includes("admin=1")) {
 //  СТАРТ
 // ============================================================
 refreshFlashItems();
+
+// ============================================================
+//  КНОПКА НАВЕРХ
+// ============================================================
+window.addEventListener("scroll", () => {
+  const btn = document.getElementById("scrollTopBtn");
+  if (!btn) return;
+  if (window.scrollY > 400) {
+    btn.classList.add("show");
+  } else {
+    btn.classList.remove("show");
+  }
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 // ============================================================
 //  АВТООЧИСТКА ФОРМ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
