@@ -1478,7 +1478,12 @@ const TG_TOKEN = "8404543190:AAHJK5n4EWwC-pTf870y2BNv7NCpydPmcg0";
 const TG_CHAT_ID = "1449020333";
 const TG_PROXY = "https://kseesha-tattoo-bot.kseeenon2003.workers.dev";
 
-const MAX_LINK = "https://t.me/kseeeshca";
+// Max
+const MAX_TOKEN = "f9LHodD0cOIVlBd5VqbvXt6qi863mAdotn15U5BY46stTzzfRtMtAdPusO4Q5yB17M0rYoUG1wdXakea4QCb";
+const MAX_CHAT_ID = "500907269";
+const MAX_PROXY = "https://kseesha-tattoo-bot.kseeenon2003.workers.dev/max";
+
+const MAX_LINK = "https://max.ru/se14366280_bot";
 const TG_LINK = "https://t.me/kseeeshca";
 
 // Cloudinary
@@ -2134,6 +2139,30 @@ async function sendToTelegram(text) {
 }
 
 // ============================================================
+//  ОТПРАВКА В MAX
+// ============================================================
+async function sendToMax(text) {
+  const url = MAX_PROXY + "/messages";
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": MAX_TOKEN
+      },
+      body: JSON.stringify({
+        chat_id: MAX_CHAT_ID,
+        text: text
+      })
+    });
+    return res.ok;
+  } catch (e) {
+    console.error("Ошибка отправки в Max:", e);
+    return false;
+  }
+}
+
+// ============================================================
 //  ОТПРАВКА ЗАЯВКИ НА ЭСКИЗ
 // ============================================================
 async function submitGenerate(e, messenger) {
@@ -2165,17 +2194,19 @@ async function submitGenerate(e, messenger) {
     "👤 <b>Имя:</b> " + f.name.value + "\n" +
     "💬 <b>TG/Max:</b> " + f.telegram.value;
 
-  const ok = await sendToTelegram(text);
+ let ok = false;
+if (messenger === "telegram") {
+  ok = await sendToTelegram(text);
+} else {
+  ok = await sendToMax(text);
+}
 
   if (ok) {
-    const link = messenger === "telegram" ? TG_LINK : MAX_LINK;
-    const msg = "Здравствуйте! Я отправила заявку на эскиз через сайт. Мой ник: " + f.telegram.value;
-    window.open(link + "?text=" + encodeURIComponent(msg), "_blank");
-    alert("✅ Заявка отправлена! Открываю " + (messenger === "telegram" ? "Telegram" : "Max") + " — напиши мне, и я пришлю эскиз.");
+    alert("✅ Заявка отправлена! Я свяжусь с вами в течение 24 часов — пришлю первый вариант эскиза.");
     resetGenerateForm();
     closeGenerate();
   } else {
-    alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
+    alert("❌ Не удалось отправить. Попробуйте ещё раз или напишите мне в Telegram: @kseeeshca");
   }
 }
 
@@ -2209,17 +2240,19 @@ async function submitFlash(e, messenger) {
     "📆 <b>Дата:</b> " + (f.date.value || "не указана") + "\n\n" +
     "📝 <b>Комментарий:</b>\n" + (f.comment.value || "—");
 
-  const ok = await sendToTelegram(text);
+  let ok = false;
+if (messenger === "telegram") {
+  ok = await sendToTelegram(text);
+} else {
+  ok = await sendToMax(text);
+}
 
   if (ok) {
-    const link = messenger === "telegram" ? TG_LINK : MAX_LINK;
-    const msg = "Здравствуйте! Хочу забронировать эскиз «" + f.flash_title.value + "». Мой ник: " + f.telegram.value;
-    window.open(link + "?text=" + encodeURIComponent(msg), "_blank");
-    alert("✅ Бронь оформлена! Открываю " + (messenger === "telegram" ? "Telegram" : "Max") + " — напиши мне, обсудим детали.");
+    alert("✅ Бронь оформлена! Я свяжусь с вами в ближайшее время, чтобы подтвердить дату.");
     f.reset();
     closeFlashBooking();
   } else {
-    alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
+    alert("❌ Не удалось отправить. Попробуйте ещё раз или напишите мне в Telegram: @kseeeshca");
   }
 }
 
@@ -2242,16 +2275,18 @@ async function submitBooking(e, messenger) {
     "🎯 <b>Свободный эскиз:</b> " + f.flash.value + "\n\n" +
     "📝 <b>Комментарий:</b>\n" + (f.comment.value || "—");
 
-  const ok = await sendToTelegram(text);
+  let ok = false;
+if (messenger === "telegram") {
+  ok = await sendToTelegram(text);
+} else {
+  ok = await sendToMax(text);
+}
 
   if (ok) {
-    const link = messenger === "telegram" ? TG_LINK : MAX_LINK;
-    const msg = "Здравствуйте! Я оставила заявку на сеанс через сайт. Мой ник: " + f.telegram.value;
-    window.open(link + "?text=" + encodeURIComponent(msg), "_blank");
-    alert("✅ Заявка отправлена! Открываю " + (messenger === "telegram" ? "Telegram" : "Max") + " — напиши мне, обсудим детали.");
+    alert("✅ Заявка отправлена! Я свяжусь с вами в течение дня, чтобы подтвердить дату и обсудить детали.");
     f.reset();
   } else {
-    alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
+    alert("❌ Не удалось отправить. Попробуйте ещё раз или напишите мне в Telegram: @kseeeshca");
   }
 }
 
