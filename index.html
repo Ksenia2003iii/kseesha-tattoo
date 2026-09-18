@@ -555,7 +555,6 @@
   .date-picker-day.disabled { color: #55556a; cursor: not-allowed; background: transparent; }
   .date-picker-hint { font-size: 12px; color: #8888a0; margin-top: 10px; text-align: center; }
 
-  /* ТАБЫ */
   .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
   .tab-btn {
     background: #16162a; border: 1px solid rgba(255,255,255,0.1);
@@ -583,6 +582,76 @@
   .legal-text p { margin-bottom: 10px; }
   .legal-text ul { margin: 10px 0 10px 20px; }
   .legal-text li { margin-bottom: 6px; }
+
+  /* АДМИНКА */
+  .admin-modal {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92); z-index: 4000; padding: 20px; overflow-y: auto;
+  }
+  .admin-modal.open { display: block; }
+  .admin-inner {
+    max-width: 700px; margin: 40px auto;
+    background: #16162a; border-radius: 20px; padding: 32px;
+    border: 1px solid rgba(183,148,246,0.3);
+  }
+  .admin-inner h2 { color: #b794f6; margin-bottom: 24px; }
+  .admin-login { text-align: center; padding: 40px 20px; }
+  .admin-login input {
+    width: 100%; max-width: 300px; padding: 14px; margin: 16px auto;
+    background: #0f0f1a; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: #e8e8f0; font-size: 15px;
+    text-align: center;
+  }
+  .admin-login button {
+    padding: 14px 32px; border: none; border-radius: 10px;
+    background: linear-gradient(135deg, #b794f6, #9f7aea);
+    color: #0f0f1a; font-weight: 700; font-size: 15px; cursor: pointer;
+    margin-top: 8px;
+  }
+  .admin-login .error { color: #ef4444; font-size: 13px; margin-top: 10px; }
+  .admin-preview {
+    margin-top: 16px; text-align: center;
+  }
+  .admin-preview img {
+    max-width: 200px; max-height: 200px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .admin-saved {
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.3);
+    color: #10b981; padding: 14px 16px; border-radius: 10px;
+    margin-top: 16px; font-size: 14px; text-align: center;
+  }
+  .admin-list {
+    margin-top: 32px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .admin-list h3 { color: #b794f6; margin-bottom: 16px; font-size: 18px; }
+  .admin-item {
+    display: flex; align-items: center; gap: 12px;
+    background: #0f0f1a; border-radius: 10px;
+    padding: 10px; margin-bottom: 8px;
+  }
+  .admin-item img {
+    width: 60px; height: 60px; object-fit: cover;
+    border-radius: 8px; flex-shrink: 0;
+  }
+  .admin-item .info { flex: 1; min-width: 0; }
+  .admin-item .info h4 { font-size: 14px; margin-bottom: 2px; }
+  .admin-item .info p { font-size: 12px; color: #8888a0; }
+  .admin-item .del-btn {
+    background: transparent; border: 1px solid #ef4444;
+    color: #ef4444; padding: 6px 12px; border-radius: 6px;
+    font-size: 12px; cursor: pointer;
+  }
+  .admin-item .del-btn:hover { background: #ef4444; color: #fff; }
+  .admin-close {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(255,255,255,0.1); border: none;
+    color: #fff; width: 40px; height: 40px;
+    border-radius: 50%; cursor: pointer; font-size: 20px;
+  }
+  .admin-close:hover { background: rgba(255,255,255,0.2); }
 
   @media (max-width: 768px) {
     section { padding: 50px 0; }
@@ -625,8 +694,7 @@
 </style>
 </head>
 <body>
-
-<header>
+ <header>
   <div class="container header-inner">
     <div class="logo">Ксеша <span class="accent">| тату</span></div>
     <a href="tel:+79506646931" class="header-phone">+7 950 664-69-31</a>
@@ -902,16 +970,8 @@
 
         <div class="form-group">
           <label>Хочешь взять свободный эскиз?</label>
-          <select name="flash">
+          <select name="flash" id="bookingFlashSelect">
             <option value="Нет, хочу индивидуальный">Нет, хочу индивидуальный</option>
-            <option value="Из темы «Животные»">Из темы «Животные»</option>
-            <option value="Из темы «Насекомые»">Из темы «Насекомые»</option>
-            <option value="Из темы «Море и океан»">Из темы «Море и океан»</option>
-            <option value="Из темы «Цветы и растения»">Из темы «Цветы и растения»</option>
-            <option value="Из темы «Сердца»">Из темы «Сердца»</option>
-            <option value="Из темы «Глаза»">Из темы «Глаза»</option>
-            <option value="Из темы «Дарк-стиль»">Из темы «Дарк-стиль»</option>
-            <option value="Из темы «Символы и знаки»">Из темы «Символы и знаки»</option>
           </select>
         </div>
 
@@ -967,23 +1027,17 @@
       <div class="legal-text">
         <h3>1. Общие положения</h3>
         <p>Настоящий документ является публичной офертой самозанятой <strong>Львовой Ксении Андреевны</strong> (далее — «Мастер») и содержит все существенные условия оказания услуг по нанесению татуировок и разработке эскизов.</p>
-
         <h3>2. Предмет оферты</h3>
         <p>Мастер оказывает услуги: разработка эскиза татуировки, нанесение татуировки, консультация. Услуги оказываются на территории коворкингов в Казани (ул. Петербургская, 25В) и Санкт-Петербурге (Каменноостровский пр., 26-28).</p>
-
         <h3>3. Предоплата</h3>
         <p>Для подтверждения записи клиент вносит предоплату в размере 1 000 ₽. Предоплата идёт в счёт разработки эскиза и засчитывается в стоимость сеанса при его проведении. Если клиент не приходит на сеанс, предоплата не возвращается, так как мастер уже затратил время на подготовку эскиза.</p>
-
         <h3>4. Возраст</h3>
         <p>Услуги оказываются лицам, достигшим 18 лет. При себе необходимо иметь паспорт.</p>
         <p><strong>Клиентам от 14 до 18 лет</strong> татуировка может быть выполнена только при наличии <strong>письменного согласия родителей (законных представителей)</strong>. Родитель обязан <strong>лично присутствовать на сеансе</strong> для подписания согласия. Без письменного согласия и личного присутствия родителя услуга не оказывается.</p>
-
         <h3>5. Противопоказания</h3>
         <p>Клиент обязан сообщить мастеру о наличии противопоказаний (беременность, лактация, диабет, онкологические заболевания, инфекционные заболевания, аллергия, дерматит, экзема, варикоз, повышенная кровоточивость и др.). Мастер вправе отказать в оказании услуг при наличии противопоказаний.</p>
-
         <h3>6. Персональные данные</h3>
         <p>Отправляя заявку, клиент даёт согласие на обработку персональных данных в соответствии с ФЗ-152 «О персональных данных».</p>
-
         <h3>7. Контакты</h3>
         <p>Телефон: +7 950 664-69-31<br>Telegram: @kseeeshca</p>
       </div>
@@ -1000,7 +1054,6 @@
           <li>с соблюдением санитарных и гигиенических норм.</li>
         </ul>
         <p>Все одноразовые материалы используются однократно и утилизируются после процедуры. Многоразовый инструмент проходит обязательную дезинфекцию и стерилизацию. Используемые пигменты предназначены исключительно для татуировки и соответствуют требованиям безопасности.</p>
-
         <h3>2. Описание процесса</h3>
         <p>Процедура включает следующие этапы:</p>
         <ul>
@@ -1012,7 +1065,6 @@
           <li>предоставление рекомендаций по уходу за татуировкой.</li>
         </ul>
         <p>Процесс заживления полностью зависит от соблюдения клиентом рекомендаций по уходу.</p>
-
         <h3>3. Возможные ощущения и побочные эффекты</h3>
         <p>Мне разъяснено и понятно, что:</p>
         <ul>
@@ -1020,10 +1072,8 @@
           <li>после процедуры возможны покраснение, отёчность, жжение кожи;</li>
           <li>может наблюдаться временная усталость или повышение температуры тела до 37–37,5 °С в течение 2–24 часов.</li>
         </ul>
-
         <h3>4. Возможные осложнения</h3>
         <p>При нарушении рекомендаций по уходу возможны: частичная потеря пигмента; воспаление или инфицирование; образование рубцов; необходимость коррекции. Степень риска считается низкой при соблюдении всех рекомендаций мастера.</p>
-
         <h3>5. Противопоказания</h3>
         <p>Я подтверждаю отсутствие следующих состояний либо осознаю возможные риски при их наличии:</p>
         <ul>
@@ -1037,22 +1087,18 @@
           <li>онкологические заболевания, болезни крови и кожи;</li>
           <li>наличие родинок, пигментных пятен в зоне нанесения.</li>
         </ul>
-
         <h3>6. Сроки заживления</h3>
         <ul>
           <li>5–7 дней — частичное восстановление верхнего слоя кожи;</li>
           <li>2–4 недели — полное восстановление кожного покрова (при условии правильного ухода).</li>
         </ul>
-
         <h3>7. Ограничения</h3>
         <ul>
           <li>По эстетическим и профессиональным соображениям мастер вправе отказать в нанесении татуировки на лицо, голову и половые органы.</li>
           <li>Мастер и студия не несут ответственности за осложнения, возникшие вследствие несоблюдения клиентом рекомендаций по уходу.</li>
         </ul>
-
         <h3>8. Согласие на фото- и видеосъёмку</h3>
         <p>Я даю своё добровольное согласие на проведение фото- и видеосъёмки процесса и результата татуировки. Я разрешаю использование, хранение и публикацию полученных материалов (фото и видео) в социальных сетях, в портфолио мастера и рекламных материалах без указания моих персональных данных, если иное не оговорено отдельно. Настоящее согласие предоставляется без ограничения по сроку.</p>
-
         <h3>Подтверждение согласия</h3>
         <p>Я подтверждаю, что:</p>
         <ul>
@@ -1084,12 +1130,14 @@
   </div>
 </footer>
 
+<!-- ЛАЙТБОКС -->
 <div class="lightbox" id="lightbox" onclick="lightboxClick(event)">
   <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1, event)">‹</button>
   <img id="lightboxImg" src="" alt="Работа">
   <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1, event)">›</button>
 </div>
 
+<!-- МОДАЛКА: ВСЕ РАЗДЕЛЫ -->
 <div class="modal-overlay" id="allSectionsModal">
   <div class="modal modal-wide">
     <button class="modal-close" onclick="closeAllSections()">✕</button>
@@ -1099,6 +1147,7 @@
   </div>
 </div>
 
+<!-- МОДАЛКА: СГЕНЕРИРОВАТЬ ЭСКИЗ -->
 <div class="modal-overlay" id="generateModal">
   <div class="modal">
     <button class="modal-close" onclick="closeGenerate()">✕</button>
@@ -1276,6 +1325,7 @@
   </div>
 </div>
 
+<!-- МОДАЛКА: БРОНИРОВАНИЕ FLASH -->
 <div class="modal-overlay" id="flashModal">
   <div class="modal">
     <button class="modal-close" onclick="closeFlashBooking()">✕</button>
@@ -1337,6 +1387,89 @@
   </div>
 </div>
 
+<!-- АДМИНКА -->
+<div class="admin-modal" id="adminModal">
+  <button class="admin-close" onclick="closeAdmin()">✕</button>
+  <div class="admin-inner">
+
+    <!-- ЛОГИН -->
+    <div class="admin-login" id="adminLogin">
+      <h2>🔐 Вход в админку</h2>
+      <p style="color: #8888a0; margin-bottom: 20px;">Введи пароль</p>
+      <input type="password" id="adminPassword" placeholder="Пароль" onkeydown="if(event.key==='Enter') checkAdminPassword()">
+      <br>
+      <button onclick="checkAdminPassword()">Войти</button>
+      <div class="error" id="adminError" style="display:none;">Неверный пароль</div>
+    </div>
+
+    <!-- АДМИНКА -->
+    <div id="adminPanel" style="display:none;">
+      <h2>🎨 Загрузить эскиз</h2>
+
+      <div class="form-group">
+        <label>Название эскиза *</label>
+        <input type="text" id="admTitle" placeholder="Например: Кот-минимал">
+      </div>
+
+      <div class="form-group">
+        <label>Описание *</label>
+        <input type="text" id="admDesc" placeholder="Например: Минимализм, до 5 см">
+      </div>
+
+      <div class="form-group">
+        <label>Цена *</label>
+        <input type="text" id="admPrice" placeholder="Например: 4 000 ₽">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Тема *</label>
+          <select id="admTheme" onchange="updateAdminSubthemes()">
+            <option value="">Выбери тему...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Подтема *</label>
+          <select id="admSubtheme">
+            <option value="">Сначала выбери тему</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="admWeek" style="width:auto; margin-right:8px;">
+          🔥 Отметить как «Эскиз недели» (со скидкой −20%)
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>Фото эскиза *</label>
+        <div class="file-drop" id="admFileDrop" onclick="document.getElementById('admFile').click()">
+          <div class="file-drop-icon">📎</div>
+          <div>Нажми или перетащи фото сюда</div>
+          <div class="file-drop-hint">JPG, PNG до 10 МБ</div>
+        </div>
+        <input type="file" id="admFile" accept="image/*" style="display:none" onchange="handleAdminFile(this.files)">
+        <div class="admin-preview" id="admPreview"></div>
+      </div>
+
+      <button class="btn btn-primary" id="admSaveBtn" style="width:100%; justify-content:center; padding:18px;" onclick="saveFlashItem()">
+        💾 Сохранить и опубликовать
+      </button>
+
+      <div class="admin-saved" id="admSaved" style="display:none;">
+        ✅ Эскиз сохранён! Он уже на сайте.
+      </div>
+
+      <div class="admin-list">
+        <h3>📋 Уже загруженные эскизы</h3>
+        <div id="admList">Загрузка...</div>
+      </div>
+    </div>
+
+  </div>
+</div>
 <script>
 // ============================================================
 //  НАСТРОЙКИ
@@ -1347,6 +1480,164 @@ const TG_PROXY = "https://kseesha-tattoo-bot.kseeenon2003.workers.dev";
 
 const MAX_LINK = "https://t.me/kseeeshca";
 const TG_LINK = "https://t.me/kseeeshca";
+
+// Cloudinary
+const CLOUD_NAME = "vlr0kfuf";
+const CLOUD_PRESET = "kseesha_unsigned";
+
+// Airtable
+const AIRTABLE_BASE = "appXtPKaqEljwv0aw";
+const AIRTABLE_TABLE = "Flash";
+const AIRTABLE_TOKEN = "patrL2QySPvYfCTAe.78607d2f6476572d3572028e031e774e445b6b1075c83304b9bb48432842dd70";
+
+// Админка
+const ADMIN_PASSWORD = "durk-mouse";
+
+// ============================================================
+//  ТЕМЫ FLASH (структура)
+// ============================================================
+const FLASH_THEMES = {
+  animals: {
+    name: "Животные", icon: "🐾",
+    subthemes: {
+      all: { name: "Все" },
+      cats: { name: "Коты" },
+      dogs: { name: "Собаки" },
+      snakes: { name: "Змеи" },
+      frogs: { name: "Лягушки (чб, цветные)" },
+      birds: { name: "Птицы" },
+      insects: { name: "Насекомые" },
+      sea: { name: "Морские" },
+      mythic: { name: "Мифические" },
+      dino: { name: "Динозавры (чб, цветные)" },
+      dark: { name: "В стиле дарк" }
+    }
+  },
+  insects: {
+    name: "Насекомые", icon: "🦋",
+    subthemes: {
+      all: { name: "Все" },
+      butterflies: { name: "Бабочки" },
+      beetles: { name: "Жуки" },
+      spiders: { name: "Пауки" },
+      bees: { name: "Пчёлы и осы" },
+      dragonflies: { name: "Стрекозы" }
+    }
+  },
+  sea: {
+    name: "Море и океан", icon: "🌊",
+    subthemes: {
+      all: { name: "Все" },
+      fish: { name: "Рыбы" },
+      whales: { name: "Киты и дельфины" },
+      octopus: { name: "Осьминоги и кальмары" },
+      jellyfish: { name: "Медузы" },
+      shells: { name: "Ракушки и кораллы" },
+      mythic: { name: "Мифические" },
+      waves: { name: "Волны и вода" },
+      lighthouses: { name: "Маяки и корабли" }
+    }
+  },
+  flowers: {
+    name: "Цветы и растения", icon: "🌸",
+    subthemes: {
+      all: { name: "Все" },
+      roses: { name: "Розы" },
+      peonies: { name: "Пионы и маки" },
+      lilies: { name: "Лилии и ирисы" },
+      lotuses: { name: "Лотосы" },
+      field: { name: "Полевые" },
+      branches: { name: "Ветки и листья" },
+      poisonous: { name: "Ядовитые" }
+    }
+  },
+  hearts: {
+    name: "Сердца", icon: "🖤",
+    subthemes: {
+      all: { name: "Все" },
+      classic: { name: "Классические" },
+      broken: { name: "Разбитые" },
+      with_text: { name: "С надписями" },
+      dagger: { name: "Стрела и кинжал" },
+      anatomy: { name: "Анатомические" },
+      dark: { name: "В стиле дарк" },
+      pair: { name: "Парные" }
+    }
+  },
+  eyes: {
+    name: "Глаза", icon: "👁️",
+    subthemes: {
+      all: { name: "Все" }
+    }
+  },
+  dark: {
+    name: "Дарк-стиль", icon: "🖤",
+    subthemes: {
+      all: { name: "Все" },
+      skulls: { name: "Черепа" },
+      bones: { name: "Кости и скелеты" },
+      gothic: { name: "Готика" },
+      occult: { name: "Оккультизм" },
+      mystique: { name: "Мистика" },
+      horror: { name: "Хоррор" }
+    }
+  },
+  symbols: {
+    name: "Символы и знаки", icon: "✨",
+    subthemes: {
+      all: { name: "Все" },
+      astrology: { name: "Астрология" },
+      moon_sun: { name: "Луна и Солнце" },
+      runes: { name: "Руны и иероглифы" },
+      geometry: { name: "Геометрия" },
+      tarot: { name: "Карты Таро" },
+      celtic: { name: "Кельтские" },
+      slavic: { name: "Славянские" }
+    }
+  }
+};
+
+let currentThemeKey = null;
+let currentSubthemeKey = "all";
+let allFlashItems = [];
+
+// ============================================================
+//  ЗАГРУЗКА ЭСКИЗОВ ИЗ AIRTABLE
+// ============================================================
+async function loadFlashFromAirtable() {
+  const url = "https://api.airtable.com/v0/" + AIRTABLE_BASE + "/" + AIRTABLE_TABLE + "?maxRecords=200";
+  try {
+    const res = await fetch(url, {
+      headers: { "Authorization": "Bearer " + AIRTABLE_TOKEN }
+    });
+    if (!res.ok) {
+      console.error("Airtable error:", res.status);
+      return [];
+    }
+    const data = await res.json();
+    return (data.records || []).map(rec => ({
+      id: rec.id,
+      title: rec.fields["Название"] || "",
+      desc: rec.fields["Описание"] || "",
+      price: rec.fields["Цена"] || "",
+      theme: rec.fields["Тема"] || "",
+      subtheme: rec.fields["Подтема"] || "",
+      img: rec.fields["Фото"] || "",
+      isWeek: !!rec.fields["Эскиз недели"]
+    }));
+  } catch (e) {
+    console.error("Ошибка загрузки из Airtable:", e);
+    return [];
+  }
+}
+
+// Обновить список эскизов на сайте
+async function refreshFlashItems() {
+  allFlashItems = await loadFlashFromAirtable();
+  renderThemes();
+  renderWeekFlash();
+  updateBookingFlashSelect();
+}
 
 // ============================================================
 //  ТАБЫ
@@ -1420,140 +1711,46 @@ document.addEventListener("keydown", (e) => {
 // ============================================================
 //  ЭСКИЗ НЕДЕЛИ
 // ============================================================
-const WEEK_FLASH = null;
-
 function renderWeekFlash() {
   const el = document.getElementById("weekFlash");
-  if (!WEEK_FLASH) { el.style.display = "none"; return; }
+  const weekItem = allFlashItems.find(i => i.isWeek);
+
+  if (!weekItem) { el.style.display = "none"; return; }
+
   el.style.display = "grid";
-  document.getElementById("weekFlashImg").querySelector("img").src = WEEK_FLASH.img;
-  document.getElementById("weekFlashTitle").textContent = WEEK_FLASH.title;
-  document.getElementById("weekFlashDesc").textContent = WEEK_FLASH.desc;
-  document.getElementById("weekFlashOld").textContent = WEEK_FLASH.oldPrice;
-  document.getElementById("weekFlashNew").textContent = WEEK_FLASH.price;
+  document.getElementById("weekFlashImg").querySelector("img").src = weekItem.img;
+  document.getElementById("weekFlashTitle").textContent = weekItem.title;
+  document.getElementById("weekFlashDesc").textContent = weekItem.desc;
+
+  // Расчёт цены со скидкой
+  const priceNum = parseInt(String(weekItem.price).replace(/\D/g, "")) || 0;
+  if (priceNum > 0) {
+    const newPrice = Math.round(priceNum * 0.8);
+    document.getElementById("weekFlashOld").textContent = priceNum.toLocaleString("ru-RU") + " ₽";
+    document.getElementById("weekFlashNew").textContent = newPrice.toLocaleString("ru-RU") + " ₽";
+  } else {
+    document.getElementById("weekFlashOld").textContent = weekItem.price;
+    document.getElementById("weekFlashNew").textContent = "по договорённости";
+  }
 }
 
 // ============================================================
-//  ТЕМЫ FLASH
+//  ТЕМЫ
 // ============================================================
-const FLASH_THEMES = {
-  animals: {
-    name: "Животные", icon: "🐾",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      cats: { name: "Коты", items: [] },
-      dogs: { name: "Собаки", items: [] },
-      snakes: { name: "Змеи", items: [] },
-      frogs: { name: "Лягушки (чб, цветные)", items: [] },
-      birds: { name: "Птицы", items: [] },
-      insects: { name: "Насекомые", items: [] },
-      sea: { name: "Морские", items: [] },
-      mythic: { name: "Мифические", items: [] },
-      dino: { name: "Динозавры (чб, цветные)", items: [] },
-      dark: { name: "В стиле дарк", items: [] }
-    }
-  },
-  insects: {
-    name: "Насекомые", icon: "🦋",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      butterflies: { name: "Бабочки", items: [] },
-      beetles: { name: "Жуки", items: [] },
-      spiders: { name: "Пауки", items: [] },
-      bees: { name: "Пчёлы и осы", items: [] },
-      dragonflies: { name: "Стрекозы", items: [] }
-    }
-  },
-  sea: {
-    name: "Море и океан", icon: "🌊",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      fish: { name: "Рыбы", items: [] },
-      whales: { name: "Киты и дельфины", items: [] },
-      octopus: { name: "Осьминоги и кальмары", items: [] },
-      jellyfish: { name: "Медузы", items: [] },
-      shells: { name: "Ракушки и кораллы", items: [] },
-      mythic: { name: "Мифические", items: [] },
-      waves: { name: "Волны и вода", items: [] },
-      lighthouses: { name: "Маяки и корабли", items: [] }
-    }
-  },
-  flowers: {
-    name: "Цветы и растения", icon: "🌸",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      roses: { name: "Розы", items: [] },
-      peonies: { name: "Пионы и маки", items: [] },
-      lilies: { name: "Лилии и ирисы", items: [] },
-      lotuses: { name: "Лотосы", items: [] },
-      field: { name: "Полевые", items: [] },
-      branches: { name: "Ветки и листья", items: [] },
-      poisonous: { name: "Ядовитые", items: [] }
-    }
-  },
-  hearts: {
-    name: "Сердца", icon: "🖤",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      classic: { name: "Классические", items: [] },
-      broken: { name: "Разбитые", items: [] },
-      with_text: { name: "С надписями", items: [] },
-      dagger: { name: "Стрела и кинжал", items: [] },
-      anatomy: { name: "Анатомические", items: [] },
-      dark: { name: "В стиле дарк", items: [] },
-      pair: { name: "Парные", items: [] }
-    }
-  },
-  eyes: {
-    name: "Глаза", icon: "👁️",
-    subthemes: {
-      all: { name: "Все", items: [] }
-    }
-  },
-  dark: {
-    name: "Дарк-стиль", icon: "🖤",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      skulls: { name: "Черепа", items: [] },
-      bones: { name: "Кости и скелеты", items: [] },
-      gothic: { name: "Готика", items: [] },
-      occult: { name: "Оккультизм", items: [] },
-      mystique: { name: "Мистика", items: [] },
-      horror: { name: "Хоррор", items: [] }
-    }
-  },
-  symbols: {
-    name: "Символы и знаки", icon: "✨",
-    subthemes: {
-      all: { name: "Все", items: [] },
-      astrology: { name: "Астрология", items: [] },
-      moon_sun: { name: "Луна и Солнце", items: [] },
-      runes: { name: "Руны и иероглифы", items: [] },
-      geometry: { name: "Геометрия", items: [] },
-      tarot: { name: "Карты Таро", items: [] },
-      celtic: { name: "Кельтские", items: [] },
-      slavic: { name: "Славянские", items: [] }
-    }
-  }
-};
-
-let currentThemeKey = null;
-let currentSubthemeKey = "all";
-
-function countThemeItems(theme) {
-  let total = 0;
-  Object.values(theme.subthemes).forEach(s => {
-    if (s.items) total += s.items.length;
-  });
-  return total;
+function countThemeItems(themeKey) {
+  const theme = FLASH_THEMES[themeKey];
+  if (!theme) return 0;
+  const themeName = theme.name;
+  return allFlashItems.filter(i => i.theme === themeName).length;
 }
 
 function renderThemes() {
   const grid = document.getElementById("themesGrid");
+  if (!grid) return;
   grid.innerHTML = "";
   Object.keys(FLASH_THEMES).forEach(key => {
     const t = FLASH_THEMES[key];
-    const total = countThemeItems(t);
+    const total = countThemeItems(key);
     const card = document.createElement("div");
     card.className = "theme-card";
     card.innerHTML =
@@ -1601,15 +1798,16 @@ function renderSubthemes() {
 function renderFlashItems() {
   const grid = document.getElementById("flashGrid");
   grid.innerHTML = "";
-  const subs = FLASH_THEMES[currentThemeKey].subthemes;
-  let items = [];
 
-  if (currentSubthemeKey === "all") {
-    Object.values(subs).forEach(s => {
-      if (s.items) items = items.concat(s.items);
-    });
-  } else {
-    items = subs[currentSubthemeKey].items || [];
+  const theme = FLASH_THEMES[currentThemeKey];
+  if (!theme) return;
+  const themeName = theme.name;
+
+  let items = allFlashItems.filter(i => i.theme === themeName);
+
+  if (currentSubthemeKey !== "all") {
+    const subName = theme.subthemes[currentSubthemeKey].name;
+    items = items.filter(i => i.subtheme === subName);
   }
 
   if (!items.length) {
@@ -1629,7 +1827,7 @@ function renderFlashItems() {
         '<h4>' + item.title + '</h4>' +
         '<p>' + item.desc + '</p>' +
         '<div class="flash-price">' + item.price + '</div>' +
-        '<button class="btn btn-primary" onclick="openFlashBooking(\'' + item.title + '\')">Забронировать</button>' +
+        '<button class="btn btn-primary" onclick="openFlashBooking(\'' + item.title.replace(/'/g, "\\'") + '\')">Забронировать</button>' +
       '</div>';
     grid.appendChild(card);
   });
@@ -1640,8 +1838,20 @@ function applyFilter(filter, btn) {
   btn.classList.add("active");
 }
 
-renderThemes();
-renderWeekFlash();
+// ============================================================
+//  ОБНОВЛЕНИЕ SELECT В ФОРМЕ ЗАПИСИ
+// ============================================================
+function updateBookingFlashSelect() {
+  const sel = document.getElementById("bookingFlashSelect");
+  if (!sel) return;
+  sel.innerHTML = '<option value="Нет, хочу индивидуальный">Нет, хочу индивидуальный</option>';
+  allFlashItems.forEach(item => {
+    const opt = document.createElement("option");
+    opt.value = item.title + " — " + item.price;
+    opt.textContent = item.title + " — " + item.price;
+    sel.appendChild(opt);
+  });
+}
 
 // ============================================================
 //  ВСЕ РАЗДЕЛЫ
@@ -1754,7 +1964,7 @@ document.querySelectorAll(".checkbox-item input").forEach(cb => {
 });
 
 // ============================================================
-//  ФАЙЛЫ
+//  ФАЙЛЫ (для референсов в заявке)
 // ============================================================
 let attachedFiles = [];
 
@@ -1902,7 +2112,7 @@ document.addEventListener("input", (e) => {
 });
 
 // ============================================================
-//  ОТПРАВКА В TELEGRAM ЧЕРЕЗ WORKER
+//  ОТПРАВКА В TELEGRAM
 // ============================================================
 async function sendToTelegram(text) {
   const url = TG_PROXY + "/bot" + TG_TOKEN + "/sendMessage";
@@ -2044,6 +2254,254 @@ async function submitBooking(e, messenger) {
     alert("❌ Не удалось отправить. Напиши мне напрямую: @kseeeshca");
   }
 }
+
+// ============================================================
+//  АДМИНКА
+// ============================================================
+let adminFile = null;
+let adminImageUrl = "";
+
+function checkAdminPassword() {
+  const input = document.getElementById("adminPassword").value;
+  const error = document.getElementById("adminError");
+  if (input === ADMIN_PASSWORD) {
+    document.getElementById("adminLogin").style.display = "none";
+    document.getElementById("adminPanel").style.display = "block";
+    error.style.display = "none";
+    initAdminThemes();
+    loadAdminList();
+  } else {
+    error.style.display = "block";
+  }
+}
+
+function openAdmin() {
+  document.getElementById("adminModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeAdmin() {
+  document.getElementById("adminModal").classList.remove("open");
+  document.body.style.overflow = "";
+  // Сброс
+  document.getElementById("adminPassword").value = "";
+  document.getElementById("adminLogin").style.display = "block";
+  document.getElementById("adminPanel").style.display = "none";
+  document.getElementById("adminError").style.display = "none";
+}
+
+function initAdminThemes() {
+  const sel = document.getElementById("admTheme");
+  sel.innerHTML = '<option value="">Выбери тему...</option>';
+  Object.keys(FLASH_THEMES).forEach(key => {
+    const opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = FLASH_THEMES[key].name;
+    sel.appendChild(opt);
+  });
+}
+
+function updateAdminSubthemes() {
+  const themeKey = document.getElementById("admTheme").value;
+  const sel = document.getElementById("admSubtheme");
+  sel.innerHTML = '<option value="">Выбери подтему...</option>';
+
+  if (!themeKey) return;
+  const subs = FLASH_THEMES[themeKey].subthemes;
+  Object.keys(subs).forEach(key => {
+    // Пропускаем "Все"
+    if (key === "all") return;
+    const opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = subs[key].name;
+    sel.appendChild(opt);
+  });
+}
+
+function handleAdminFile(files) {
+  if (!files || !files[0]) return;
+  adminFile = files[0];
+
+  // Показать превью
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById("admPreview").innerHTML = '<img src="' + e.target.result + '" alt="Превью">';
+  };
+  reader.readAsDataURL(adminFile);
+}
+
+// Drag & drop для файла админки
+const admDrop = document.getElementById("admFileDrop");
+if (admDrop) {
+  ["dragenter", "dragover"].forEach(ev => {
+    admDrop.addEventListener(ev, (e) => {
+      e.preventDefault();
+      admDrop.classList.add("dragover");
+    });
+  });
+  ["dragleave", "drop"].forEach(ev => {
+    admDrop.addEventListener(ev, (e) => {
+      e.preventDefault();
+      admDrop.classList.remove("dragover");
+    });
+  });
+  admDrop.addEventListener("drop", (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.files.length) handleAdminFile(e.dataTransfer.files);
+  });
+}
+
+// Загрузка фото в Cloudinary
+async function uploadToCloudinary(file) {
+  const url = "https://api.cloudinary.com/v1_1/" + CLOUD_NAME + "/image/upload";
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", CLOUD_PRESET);
+
+  const res = await fetch(url, {
+    method: "POST",
+    body: formData
+  });
+  if (!res.ok) throw new Error("Cloudinary upload failed");
+  const data = await res.json();
+  return data.secure_url;
+}
+
+// Сохранение эскиза в Airtable
+async function saveFlashItem() {
+  const title = document.getElementById("admTitle").value.trim();
+  const desc = document.getElementById("admDesc").value.trim();
+  const price = document.getElementById("admPrice").value.trim();
+  const themeKey = document.getElementById("admTheme").value;
+  const subthemeKey = document.getElementById("admSubtheme").value;
+  const isWeek = document.getElementById("admWeek").checked;
+
+  if (!title || !desc || !price || !themeKey || !subthemeKey || !adminFile) {
+    alert("Заполни все поля и выбери фото");
+    return;
+  }
+
+  const btn = document.getElementById("admSaveBtn");
+  btn.textContent = "⏳ Загружаю фото...";
+  btn.disabled = true;
+
+  try {
+    // 1. Загрузка фото в Cloudinary
+    const imageUrl = await uploadToCloudinary(adminFile);
+
+    btn.textContent = "⏳ Сохраняю в базу...";
+
+    // 2. Сохранение в Airtable
+    const themeName = FLASH_THEMES[themeKey].name;
+    const subthemeName = FLASH_THEMES[themeKey].subthemes[subthemeKey].name;
+
+    const airtableUrl = "https://api.airtable.com/v0/" + AIRTABLE_BASE + "/" + AIRTABLE_TABLE;
+    const airtableRes = await fetch(airtableUrl, {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + AIRTABLE_TOKEN,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fields: {
+          "Название": title,
+          "Описание": desc,
+          "Цена": price,
+          "Тема": themeName,
+          "Подтема": subthemeName,
+          "Фото": imageUrl,
+          "Эскиз недели": isWeek
+        }
+      })
+    });
+
+    if (!airtableRes.ok) throw new Error("Airtable save failed");
+
+    // Успех
+    document.getElementById("admSaved").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("admSaved").style.display = "none";
+    }, 4000);
+
+    // Сброс формы
+    document.getElementById("admTitle").value = "";
+    document.getElementById("admDesc").value = "";
+    document.getElementById("admPrice").value = "";
+    document.getElementById("admTheme").value = "";
+    document.getElementById("admSubtheme").innerHTML = '<option value="">Сначала выбери тему</option>';
+    document.getElementById("admWeek").checked = false;
+    document.getElementById("admPreview").innerHTML = "";
+    document.getElementById("admFile").value = "";
+    adminFile = null;
+
+    // Обновить список
+    loadAdminList();
+    refreshFlashItems();
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Ошибка: " + err.message);
+  } finally {
+    btn.textContent = "💾 Сохранить и опубликовать";
+    btn.disabled = false;
+  }
+}
+
+// Загрузка списка эскизов в админке
+async function loadAdminList() {
+  const listEl = document.getElementById("admList");
+  listEl.innerHTML = "Загрузка...";
+  const items = await loadFlashFromAirtable();
+  listEl.innerHTML = "";
+
+  if (!items.length) {
+    listEl.innerHTML = '<p style="color: #8888a0; font-size: 14px;">Пока ничего не загружено</p>';
+    return;
+  }
+
+  items.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "admin-item";
+    row.innerHTML =
+      '<img src="' + item.img + '" alt="' + item.title + '">' +
+      '<div class="info">' +
+        '<h4>' + item.title + ' ' + (item.isWeek ? '🔥' : '') + '</h4>' +
+        '<p>' + item.theme + ' → ' + item.subtheme + ' · ' + item.price + '</p>' +
+      '</div>' +
+      '<button class="del-btn" onclick="deleteFlashItem(\'' + item.id + '\')">Удалить</button>';
+    listEl.appendChild(row);
+  });
+}
+
+// Удаление эскиза
+async function deleteFlashItem(recordId) {
+  if (!confirm("Удалить этот эскиз?")) return;
+
+  try {
+    const url = "https://api.airtable.com/v0/" + AIRTABLE_BASE + "/" + AIRTABLE_TABLE + "/" + recordId;
+    const res = await fetch(url, {
+      method: "DELETE",
+      headers: { "Authorization": "Bearer " + AIRTABLE_TOKEN }
+    });
+    if (!res.ok) throw new Error("Delete failed");
+    loadAdminList();
+    refreshFlashItems();
+  } catch (e) {
+    alert("Ошибка удаления: " + e.message);
+  }
+}
+
+// ============================================================
+//  ПРОВЕРКА URL НА ?admin=1
+// ============================================================
+if (window.location.search.includes("admin=1")) {
+  setTimeout(openAdmin, 500);
+}
+
+// ============================================================
+//  СТАРТ
+// ============================================================
+refreshFlashItems();
 </script>
 
 </body>
